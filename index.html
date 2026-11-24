@@ -718,9 +718,9 @@ p{font-size:14px;line-height:24px}
       <button class="x" data-close aria-label="Fechar"><svg width="24" height="24"><use href="#i-close"/></svg></button>
       <svg class="face" style="margin:0;width:48px;height:48px"><use href="#i-face"/></svg>
       <h2>Face ID</h2>
-      <p style="font-size:15px;line-height:32px">Para usar a credencial, você precisa verificar sua identidade por reconhecimento facial.</p>
+      <p style="font-size:15px;line-height:32px">Para usar a credencial, confirme sua identidade com o Face ID do seu celular.</p>
       <button class="btn soft" data-toast="Código de verificação não faz parte do protótipo">Inserir código</button>
-      <button class="btn primary" data-act="use-cred" data-go="scan" data-close>Validar</button>
+      <button class="btn primary" data-act="faceid-verify" id="faceid-btn">Validar</button>
     </div>
   </div>
 </section>
@@ -1022,6 +1022,43 @@ p{font-size:14px;line-height:24px}
     show(id);
   }
   var toastT;
+  /* Face ID real: WebAuthn com autenticador de plataforma (Face ID / Touch ID / biometria do aparelho).
+     Protótipo sem servidor: a passkey é criada no 1º uso e o ID fica no aparelho; a cada uso o sistema
+     pede a biometria e conferimos a flag de verificação do usuário (UV) na resposta do autenticador. */
+  var PK_KEY='vw-passkey';
+  function rnd(n){var a=new Uint8Array(n);crypto.getRandomValues(a);return a}
+  function b64e(buf){return btoa(String.fromCharCode.apply(null,new Uint8Array(buf))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
+  function b64d(str){str=str.replace(/-/g,'+').replace(/_/g,'/');while(str.length%4)str+='=';var b=atob(str),a=new Uint8Array(b.length);for(var i=0;i<b.length;i++)a[i]=b.charCodeAt(i);return a}
+  function pkGet(){try{return localStorage.getItem(PK_KEY)}catch(_){return null}}
+  function pkSet(v){try{if(v)localStorage.setItem(PK_KEY,v);else localStorage.removeItem(PK_KEY)}catch(_){}}
+  function faceOk(){state.use=view;$$('.sheet-wrap.open').forEach(function(s){s.classList.remove('open')});go('scan')}
+  function verifyFace(btn){
+    if(btn.disabled)return;
+    if(!window.isSecureContext||!window.PublicKeyCredential||!navigator.credentials){toast('Biometria indisponível aqui. Abra o app publicado (HTTPS) no celular.');return}
+    var saved=pkGet();
+    var label=btn.textContent;btn.disabled=true;btn.textContent='Aguardando Face ID…';
+    var done=function(){btn.disabled=false;btn.textContent=label};
+    var req=saved
+      ? navigator.credentials.get({publicKey:{challenge:rnd(32),allowCredentials:[{type:'public-key',id:b64d(saved),transports:['internal','hybrid']}],userVerification:'required',timeout:60000}})
+      : navigator.credentials.create({publicKey:{challenge:rnd(32),rp:{name:'Valid Wallet'},
+          user:{id:rnd(16),name:(U().email||'usuario@validwallet'),displayName:(U().name||'Valid Wallet')},
+          pubKeyCredParams:[{type:'public-key',alg:-7},{type:'public-key',alg:-257}],
+          authenticatorSelection:{authenticatorAttachment:'platform',userVerification:'required',residentKey:'preferred'},
+          attestation:'none',timeout:60000}});
+    req.then(function(cred){
+      done();
+      if(!cred){toast('Não foi possível verificar sua identidade');return}
+      if(saved){var ad=new Uint8Array(cred.response.authenticatorData);if(!(ad[32]&4)){toast('Não foi possível verificar sua identidade');return}}
+      else pkSet(b64e(cred.rawId));
+      faceOk();
+    }).catch(function(err){
+      done();
+      var n=err&&err.name;
+      if(n==='NotAllowedError'){toast('Verificação cancelada ou não reconhecida');if(saved)pkSet(null)}
+      else if(n==='NotSupportedError'||n==='SecurityError')toast('Biometria indisponível aqui. Abra o app publicado (HTTPS) no celular.');
+      else toast('Não foi possível verificar sua identidade');
+    });
+  }
   function toast(msg){var t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove('show')},2200)}
 
   document.addEventListener('click',function(e){
@@ -1042,6 +1079,7 @@ p{font-size:14px;line-height:24px}
     if(act==='google-continue'){var ga=$('#accts .acct.sel');setUser({name:ga.getAttribute('data-name'),email:ga.getAttribute('data-email'),phone:PERSONA.phone})}
     if(act==='apple-continue'){var an=$('#social-apple input').value.trim()||PERSONA.name,am=$('#mailopts .acct.sel');setUser({name:an,email:am.getAttribute('data-email'),phone:PERSONA.phone})}
     if(act==='use-cred'){state.use=view}
+    if(act==='faceid-verify'){verifyFace(el);return}
     if(act==='invite-read'){go('invite-confirm');return}
     if(act==='invite-finish'){state.tipo='evento';go('rosto-intro');return}
     if(act==='scan-read'){if(!usedCred()){go('no-creds');return}go('share');return}
