@@ -201,7 +201,26 @@ p{font-size:14px;line-height:24px}
 .notif-btn svg{width:26px;height:26px}
 .notif-btn .dot{position:absolute;top:9px;right:10px;width:10px;height:10px;border-radius:50%;background:#ff5a4e;box-shadow:0 0 0 2px var(--primary)}
 .notif-btn.read .dot{display:none}
-.notif{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border-radius:var(--r);padding:16px;margin-bottom:12px;position:relative}
+.notif{display:flex;gap:14px;align-items:center;background:var(--surface);border-radius:var(--r);padding:16px;position:relative;transition:transform .25s ease;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.notif>div{flex:1;min-width:0}
+.notif.dragging{transition:none}
+.notif-row{position:relative;margin-bottom:12px;border-radius:var(--r);overflow:hidden;transition:height .28s ease,margin .28s ease,opacity .28s ease}
+.notif-row.open{background:#b3261e}
+.notif-row.gone{opacity:0;margin-bottom:0}
+.notif-del{position:absolute;top:0;right:0;bottom:0;width:88px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#fff;font-size:12px;font-weight:600}
+.notif-del svg{width:22px;height:22px}
+.notif-read{display:inline-flex;align-items:center;gap:6px;margin-top:10px;color:var(--primary);font-size:13px;font-weight:600}
+.notif-read svg{width:16px;height:16px}
+.notif:not(.unread) .notif-read{display:none}
+.notif-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;font-size:12px;color:var(--muted)}
+.notif-top button{color:var(--primary);font-weight:600;font-size:13px;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.notif-top button svg{width:18px;height:18px}
+.notif-top button[hidden]{display:none}
+.notif-empty{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:48px 16px;color:var(--muted)}
+.notif-empty[hidden]{display:none}
+.notif-empty .ico-circle{width:56px;height:56px}
+.notif-empty .ico-circle svg{width:28px;height:28px}
+.notif-empty b{color:var(--text);font-size:16px}
 .notif b{display:block;font-size:14px;line-height:20px;padding-right:14px}
 .notif p{font-size:13px;line-height:19px;color:var(--muted);margin-top:2px}
 .notif small{display:block;font-size:12px;color:var(--muted);margin-top:6px}
@@ -328,6 +347,7 @@ p{font-size:14px;line-height:24px}
 <!-- ICONES (sprite) -->
 <svg width="0" height="0" style="position:absolute">
   <symbol id="i-wallet-fill" viewBox="0 0 256 256" fill="currentColor"><path d="M216,64H56a8,8,0,0,1,0-16H192a8,8,0,0,0,0-16H56A24,24,0,0,0,32,56V184a24,24,0,0,0,24,24H216a16,16,0,0,0,16-16V80A16,16,0,0,0,216,64Zm-36,80a12,12,0,1,1,12-12A12,12,0,0,1,180,144Z"/></symbol><symbol id="i-qr-fill" viewBox="0 0 256 256" fill="currentColor"><path d="M120,56v48a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V56A16,16,0,0,1,56,40h48A16,16,0,0,1,120,56Zm-16,80H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm96-96H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40ZM144,184a8,8,0,0,0,8-8V144a8,8,0,0,0-16,0v32A8,8,0,0,0,144,184Zm64-32H184v-8a8,8,0,0,0-16,0v56H144a8,8,0,0,0,0,16h32a8,8,0,0,0,8-8V168h24a8,8,0,0,0,0-16Zm0,32a8,8,0,0,0-8,8v16a8,8,0,0,0,16,0V192A8,8,0,0,0,208,184Z"/></symbol><symbol id="i-gear-fill" viewBox="0 0 256 256" fill="currentColor"><path d="M237.94,107.21a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A111.92,111.92,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.63a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"/></symbol><symbol id="i-logo" viewBox="0 0 66 20" fill="currentColor"><path d="M15.6372 0.0412183H19.3333L11.4294 19.6588H7.93233L0 0.0412183H3.80979L9.72351 15.1951L15.6372 0.0412183Z"/><path d="M29.8486 5.17023H33.0329V19.6588H29.8486V17.4127C28.5692 19.1471 26.8917 20 24.7594 20C22.7123 20 21.0065 19.2892 19.6418 17.8392C18.3055 16.3892 17.6231 14.5696 17.6231 12.4088C17.6231 10.2481 18.3055 8.45689 19.6418 7.00689C21.0065 5.5569 22.7123 4.81768 24.7594 4.81768C26.8917 4.81768 28.5692 5.67062 29.8486 7.40493V5.17023ZM28.5692 15.65C28.988 15.2225 29.3169 14.7155 29.5366 14.1588C29.7564 13.6021 29.8624 13.0071 29.8486 12.4088C29.8486 11.1294 29.4221 10.049 28.5692 9.1961C27.7163 8.31473 26.6643 7.88826 25.3849 7.88826C24.1055 7.88826 23.0251 8.31473 22.1722 9.1961C21.3192 10.049 20.8927 11.1294 20.8927 12.4088C20.8789 13.0071 20.985 13.6021 21.2047 14.1588C21.4244 14.7155 21.7534 15.2225 22.1722 15.65C23.0251 16.5029 24.1055 16.9294 25.3849 16.9294C26.6643 16.9294 27.7163 16.5029 28.5692 15.65Z"/><path d="M38.867 16.7304H41.4258V19.6588H35.6813V0H38.867V16.7304Z"/><path d="M62.0186 0H65.2029V19.6588H62.0186V17.4128C60.7392 19.1471 59.0618 20 56.9294 20C54.8824 20 53.1765 19.2892 51.8118 17.8392C50.4755 16.3892 49.7932 14.5696 49.7932 12.4088C49.7932 10.2481 50.4755 8.45689 51.8118 7.00689C53.1765 5.5569 54.8824 4.81768 56.9294 4.81768C59.0618 4.81768 60.7392 5.67062 62.0186 7.40493V0ZM60.7392 15.65C61.158 15.2225 61.4869 14.7155 61.7067 14.1588C61.9264 13.6021 62.0325 13.0071 62.0186 12.4088C62.0186 11.1294 61.5922 10.049 60.7392 9.1961C59.8863 8.31473 58.8343 7.88826 57.5549 7.88826C56.2755 7.88826 55.1951 8.31473 54.3422 9.1961C53.4892 10.049 53.0628 11.1294 53.0628 12.4088C53.0489 13.0071 53.155 13.6021 53.3747 14.1588C53.5945 14.7155 53.9234 15.2225 54.3422 15.65C55.1951 16.503 56.2755 16.9294 57.5549 16.9294C58.8343 16.9294 59.8863 16.503 60.7392 15.65Z"/><path d="M44.0131 8.07875H41.4784V5.14748H47.1419V19.6546H44.0145L44.0131 8.07875Z"/><path d="M45.2115 3.86666C46.2768 3.86666 47.1405 3.00299 47.1405 1.9376C47.1405 0.872208 46.2768 0.00853603 45.2115 0.00853603C44.1461 0.00853603 43.2824 0.872208 43.2824 1.9376C43.2824 3.00299 44.1461 3.86666 45.2115 3.86666Z"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 256 256" fill="currentColor"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"/></symbol><symbol id="i-checks" viewBox="0 0 256 256" fill="currentColor"><path d="M149.61,85.71l-89.6,88a8,8,0,0,1-11.22,0L10.39,136a8,8,0,1,1,11.22-11.41L54.4,156.79l84-82.5a8,8,0,1,1,11.22,11.42Zm96.1-11.32a8,8,0,0,0-11.32-.1l-84,82.5-18.83-18.5a8,8,0,0,0-11.21,11.42l24.43,24a8,8,0,0,0,11.22,0l89.6-88A8,8,0,0,0,245.71,74.39Z"/></symbol>
   <symbol id="i-bell" viewBox="0 0 256 256" fill="currentColor"><path d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"/></symbol>
   <symbol id="i-refresh" viewBox="0 0 256 256" fill="currentColor"><path d="M240,56v48a8,8,0,0,1-8,8H184a8,8,0,0,1,0-16H211.4L184.81,71.64l-.25-.24a80,80,0,1,0-1.67,114.78,8,8,0,0,1,11,11.63A95.44,95.44,0,0,1,128,224h-1.32A96,96,0,1,1,195.75,60L224,85.8V56a8,8,0,1,1,16,0Z"/></symbol>
   <symbol id="i-phone" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"/></symbol>
@@ -755,10 +775,12 @@ p{font-size:14px;line-height:24px}
 <!-- ========== OPÇÕES ========== -->
 <section class="screen" id="notificacoes">
   <div class="bar"><button class="back" data-back aria-label="Voltar"><svg width="24" height="24"><use href="#i-back"/></svg></button>Notificações</div>
-  <div class="body">
-    <div class="notif unread"><span class="ico-circle"><svg><use href="#i-id"/></svg></span><div><b>Adicione sua primeira credencial</b><p>Cadastre seu passaporte ou seus dados pessoais para compartilhar com segurança.</p><small>Agora</small></div></div>
-    <div class="notif unread"><span class="ico-circle"><svg><use href="#i-key"/></svg></span><div><b>Proteja sua carteira</b><p>Ative as proteções de uso em Opções para deixar sua carteira ainda mais segura.</p><small>Hoje</small></div></div>
-    <div class="notif"><span class="ico-circle"><svg><use href="#i-wallet"/></svg></span><div><b>Boas-vindas à Valid Wallet</b><p>Sua carteira digital está pronta. Guarde documentos e compartilhe só o necessário.</p><small>Hoje</small></div></div>
+  <div class="body" id="notif-list">
+    <div class="notif-top"><span>Deslize para a esquerda para excluir</span><button id="notif-all" data-act="notif-read-all"><svg><use href="#i-checks"/></svg>Marcar todas como lidas</button></div>
+    <div class="notif-row"><button class="notif-del" data-act="notif-del" aria-label="Excluir notificação"><svg><use href="#i-trash"/></svg>Excluir</button><div class="notif unread"><span class="ico-circle"><svg><use href="#i-id"/></svg></span><div><b>Adicione sua primeira credencial</b><p>Cadastre seu passaporte ou seus dados pessoais para compartilhar com segurança.</p><small>Agora</small><button class="notif-read" data-act="notif-read"><svg><use href="#i-tick"/></svg>Marcar como lida</button></div></div></div>
+    <div class="notif-row"><button class="notif-del" data-act="notif-del" aria-label="Excluir notificação"><svg><use href="#i-trash"/></svg>Excluir</button><div class="notif unread"><span class="ico-circle"><svg><use href="#i-key"/></svg></span><div><b>Proteja sua carteira</b><p>Ative as proteções de uso em Opções para deixar sua carteira ainda mais segura.</p><small>Hoje</small><button class="notif-read" data-act="notif-read"><svg><use href="#i-tick"/></svg>Marcar como lida</button></div></div></div>
+    <div class="notif-row"><button class="notif-del" data-act="notif-del" aria-label="Excluir notificação"><svg><use href="#i-trash"/></svg>Excluir</button><div class="notif"><span class="ico-circle"><svg><use href="#i-wallet"/></svg></span><div><b>Boas-vindas à Valid Wallet</b><p>Sua carteira digital está pronta. Guarde documentos e compartilhe só o necessário.</p><small>Hoje</small><button class="notif-read" data-act="notif-read"><svg><use href="#i-tick"/></svg>Marcar como lida</button></div></div></div>
+    <div class="notif-empty" id="notif-empty" hidden><span class="ico-circle"><svg><use href="#i-bell"/></svg></span><b>Nenhuma notificação</b><p>Você está em dia.</p></div>
   </div>
 </section>
 
@@ -955,6 +977,49 @@ p{font-size:14px;line-height:24px}
     var ic=i==='event'?'<span class="ico-circle ev"><img class="cred-ico" src="assets/logo-icon.svg" alt=""></span>':'<span class="ico-circle">'+ICON(i)+'</span>';
     return '<button class="wallet-card'+(k==='evento'?' ev':'')+'" data-go="cred" data-view="'+k+'">'+ic+'<span class="txt"><small>'+t+'</small><strong>'+esc(shortName(U().name))+'</strong><small><span>Validade:</span> '+esc(exp)+'</small></span><svg class="chev"><use href="#i-chev"/></svg></button>'}
 
+  /* Notificações: deslizar para a esquerda revela "Excluir"; deslize longo exclui direto */
+  function notifSync(){
+    var rows=$$('#notif-list .notif-row'), unread=$$('#notif-list .notif.unread').length;
+    $$('.notif-btn').forEach(function(b){b.classList.toggle('read',!unread)});
+    $('#notif-all').hidden=!unread;
+    $('#notif-empty').hidden=rows.length>0;
+    $('.notif-top span').hidden=!rows.length;
+  }
+  function setX(n,x){n._x=x;n.style.transform=x?'translateX('+x+'px)':'';n.parentNode.classList.toggle('open',!!x)}
+  function closeRows(except){$$('#notif-list .notif').forEach(function(n){if(n!==except&&n._x)setX(n,0)})}
+  function delNotif(row){
+    if(!row||row.classList.contains('gone'))return;
+    row.style.height=row.offsetHeight+'px';
+    requestAnimationFrame(function(){row.classList.add('gone');row.style.height='0px'});
+    setTimeout(function(){row.parentNode&&row.parentNode.removeChild(row);notifSync()},300);
+    toast('Notificação excluída');
+  }
+  var sw=null;
+  document.addEventListener('pointerdown',function(e){
+    var n=e.target.closest&&e.target.closest('#notif-list .notif');
+    if(!e.target.closest||!e.target.closest('.notif-del'))closeRows(n);
+    if(!n||e.target.closest('button'))return;
+    sw={n:n,x:e.clientX,y:e.clientY,base:n._x||0,drag:false,id:e.pointerId};
+  });
+  document.addEventListener('pointermove',function(e){
+    if(!sw)return;
+    var dx=e.clientX-sw.x,dy=e.clientY-sw.y;
+    if(!sw.drag){
+      if(Math.abs(dx)>8&&Math.abs(dx)>Math.abs(dy)){sw.drag=true;sw.n.classList.add('dragging');try{sw.n.setPointerCapture(sw.id)}catch(_){}}
+      else if(Math.abs(dy)>8){sw=null;return}
+      else return;
+    }
+    setX(sw.n,Math.min(0,sw.base+dx));
+  });
+  function swEnd(){
+    if(!sw)return;var n=sw.n,drag=sw.drag;sw=null;
+    n.classList.remove('dragging');if(!drag)return;
+    var x=n._x||0;
+    if(x<-n.offsetWidth*0.45){setX(n,-n.offsetWidth);delNotif(n.parentNode)}
+    else setX(n,x<-44?-88:0);
+  }
+  document.addEventListener('pointerup',swEnd);document.addEventListener('pointercancel',swEnd);
+
   /* Abas inferiores */
   function renderTabs(){
     $$('.tabbar').forEach(function(t){
@@ -969,7 +1034,6 @@ p{font-size:14px;line-height:24px}
     clearTimeout(timer);stopCam();
     $$('.screen').forEach(function(s){s.classList.remove('active')});
     var el=$('#'+id); el.classList.add('active');
-    if(id==='notificacoes')$$('.notif-btn').forEach(function(b){b.classList.add('read')});
     var tc=$('meta[name="theme-color"]');if(tc)tc.setAttribute('content',id==='splash'?'#f6f6f2':id==='home'?'#2229f1':'#ffffff');
     $$('.sheet-wrap.open').forEach(function(s){s.classList.remove('open')});
     if(id==='manual-pass'){var mn=$('#mp-name input');if(mn&&!mn.value){mn.value=U().name;$('#mp-name').classList.add('has')}}
@@ -1055,6 +1119,9 @@ p{font-size:14px;line-height:24px}
     if(act==='apple-continue'){var an=$('#social-apple input').value.trim()||PERSONA.name,am=$('#mailopts .acct.sel');setUser({name:an,email:am.getAttribute('data-email'),phone:PERSONA.phone})}
     if(act==='use-cred'){state.use=view}
     if(act==='faceid-verify'){verifyFace(el);return}
+    if(act==='notif-read'){el.closest('.notif').classList.remove('unread');notifSync();return}
+    if(act==='notif-read-all'){$$('#notif-list .notif.unread').forEach(function(n){n.classList.remove('unread')});notifSync();toast('Todas as notificações foram marcadas como lidas');return}
+    if(act==='notif-del'){delNotif(el.closest('.notif-row'));return}
     if(act==='invite-read'){go('invite-confirm');return}
     if(act==='invite-finish'){state.tipo='evento';go('rosto-intro');return}
     if(act==='scan-read'){if(!usedCred()){go('no-creds');return}go('share');return}
@@ -1231,7 +1298,7 @@ p{font-size:14px;line-height:24px}
       var p=$('#cred-pages');p.scrollTo({left:(+b.getAttribute('data-page'))*(p.clientWidth+12)});
     });
   }
-  renderTabs();
+  renderTabs();notifSync();
   var start=location.hash.slice(1);
   if(start&&$('#'+start)){state.passaporte=state.dados=state.evento=/^(cred|scan|share|shared|opcoes|idioma)$/.test(start);stack=['home',start];show(start)}
   else show('splash');
