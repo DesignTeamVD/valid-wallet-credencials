@@ -51,11 +51,11 @@ img{pointer-events:none}
 html,body{height:100%}
 body{font-family:'Open Sans',system-ui,sans-serif;color:var(--text);background:#eef0f4;display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden}
 
-/* Layout PWA: ocupa a tela toda no celular; no navegador, coluna de no máximo 360px */
+/* Layout PWA: ocupa a tela toda no celular; no navegador do computador, coluna de no máximo 360px */
 .stage{flex:1;min-height:0;display:flex;justify-content:center;overflow:hidden;position:relative}
-.device{position:relative;width:100%;max-width:360px;height:100%}
+.device{position:relative;width:100%;height:100%}
 .app{position:relative;width:100%;height:100%;background:var(--bg);overflow:hidden}
-@media (min-width:361px){.app{box-shadow:0 0 0 1px var(--line),0 10px 40px rgba(15,15,15,.06)}}
+@media (hover:hover) and (pointer:fine){.device{max-width:360px}.app{box-shadow:0 0 0 1px var(--line),0 10px 40px rgba(15,15,15,.06)}}
 @media (display-mode:standalone),(display-mode:fullscreen){body{padding-bottom:env(safe-area-inset-bottom)}}
 body.web .sheet{max-width:none}
 
