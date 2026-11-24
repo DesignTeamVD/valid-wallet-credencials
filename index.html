@@ -13,7 +13,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Valid Wallet">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="application-name" content="Valid Wallet">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate">
 <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
@@ -49,55 +49,14 @@ img{pointer-events:none}
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%}
-body{font-family:'Open Sans',system-ui,sans-serif;color:var(--text);background:#1e1f24;display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden}
+body{font-family:'Open Sans',system-ui,sans-serif;color:var(--text);background:#eef0f4;display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden}
 
-/* Barra de ferramentas do protótipo */
-.toolbar{flex:none;height:52px;display:flex;align-items:center;gap:12px;padding:0 16px;background:#15161a;color:#e8e8ee;border-bottom:1px solid #2c2d34;position:relative;z-index:50}
-.toolbar .tt{font-weight:700;font-size:14px;margin-right:auto;display:flex;align-items:center;gap:8px;white-space:nowrap}
-.toolbar .tt span{font-weight:400;color:#8b8c99}
-.tb{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 12px;border-radius:8px;border:1px solid #3a3b44;background:#22232a;color:#e8e8ee;font-size:13px;font-weight:600;white-space:nowrap}
-.tb:hover{background:#2c2d36}
-.tb svg{width:18px;height:18px;flex:none}
-.seg{display:inline-flex;border:1px solid #3a3b44;border-radius:8px;overflow:hidden}
-.seg button{height:32px;padding:0 12px;font-size:13px;font-weight:600;color:#aab;background:#22232a;display:flex;align-items:center;gap:6px}
-.seg button svg{width:18px;height:18px}
-.seg button.on{background:#2229f1;color:#fff}
-.menu-wrap{position:relative}
-.flows{position:absolute;right:0;top:42px;width:290px;max-width:calc(100vw - 16px);max-height:calc(100vh - 70px);max-height:calc(100dvh - 70px);overflow-y:auto;overscroll-behavior:contain;background:#22232a;border:1px solid #3a3b44;border-radius:10px;padding:6px;display:none;box-shadow:0 12px 40px rgba(0,0,0,.5);z-index:80}
-.flows.langmenu{width:190px}
-.flows button.on{background:#2f303a}
-.flows.langmenu button.on::after{content:"\2713";float:right;color:#3483ff}
-.lang-wrap{display:none}
-.flows.open{display:block}
-.flows button{display:block;width:100%;padding:10px 12px;border-radius:6px;color:#e8e8ee;font-size:13px;font-weight:600}
-.flows button small{display:block;color:#9a9ba8;font-size:11px;font-weight:400;margin-top:2px}
-.flows button:hover{background:#2f303a}
-.stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
-body.full .toolbar,body.full .sitefoot{display:none}
-#fsExit{position:fixed;top:10px;right:10px;z-index:60;width:40px;height:40px;border-radius:50%;background:rgba(21,22,26,.72);color:#fff;border:1px solid rgba(255,255,255,.25);display:none;align-items:center;justify-content:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-#fsExit svg{width:22px;height:22px}
-/* App instalado (PWA): respeita a área do indicador de início do iPhone */
+/* Layout PWA: ocupa a tela toda no celular; no navegador, coluna de no máximo 600px */
+.stage{flex:1;min-height:0;display:flex;justify-content:center;overflow:hidden;position:relative}
+.device{position:relative;width:100%;max-width:600px;height:100%}
+.app{position:relative;width:100%;height:100%;background:var(--bg);overflow:hidden}
+@media (min-width:601px){.app{box-shadow:0 0 0 1px var(--line),0 10px 40px rgba(15,15,15,.06)}}
 @media (display-mode:standalone),(display-mode:fullscreen){body{padding-bottom:env(safe-area-inset-bottom)}}
-body.full #fsExit{display:flex}
-.sitefoot{flex:none;height:36px;display:flex;align-items:center;justify-content:center;font-size:12px;color:#8b8c99;background:#15161a;border-top:1px solid #2c2d34;padding:0 16px;text-align:center}
-
-/* Moldura de iPhone */
-.device{position:relative;flex:none;width:388px;height:808px;padding:14px;background:#0b0b0d;border-radius:58px;box-shadow:0 0 0 2px #3a3b42,0 0 0 5px #0b0b0d,0 30px 80px rgba(0,0,0,.6)}
-.app{position:relative;width:360px;height:780px;background:var(--bg);overflow:hidden;border-radius:44px;--sb:44px}
-.notch{position:absolute;top:24px;left:50%;width:104px;height:30px;margin-left:-52px;border-radius:15px;background:#000;z-index:8}
-.homebar{position:absolute;bottom:20px;left:50%;width:124px;height:5px;margin-left:-62px;border-radius:3px;background:#111;z-index:8;opacity:.85}
-.sb{position:absolute;top:14px;left:14px;width:360px;height:46px;z-index:7;display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 6px 34px;font-size:14px;font-weight:700;border-radius:44px 44px 0 0;pointer-events:none}
-.sb.light{background:var(--surface);color:#111}
-.sb.dark{background:#0f0f0f;color:#fff}
-.sb.blue{background:var(--primary);color:#fff}
-.sb svg{width:18px;height:12px;fill:currentColor}
-.sb .r{display:flex;gap:5px;align-items:center}
-
-/* Visualização web responsiva */
-body.web .device{width:100%;max-width:600px;height:100%;padding:0;background:none;border-radius:0;box-shadow:none;transform:none!important}
-body.web .app{width:100%;height:100%;border-radius:0;--sb:0px;box-shadow:0 0 0 1px #2c2d34,0 0 60px rgba(0,0,0,.45)}   /* coluna de no máximo 600px, como um app mobile */
-body.web .notch,body.web .homebar,body.web .sb{display:none}
-body.web .stage{align-items:stretch;justify-content:center}
 body.web .sheet{max-width:none}
 
 /* Onboarding: barra sobre o azul, campos com placeholder, cadastro e login social */
@@ -170,20 +129,6 @@ body.web .sheet{max-width:none}
 .ico-circle.ev{background:var(--event)}
 .or{display:flex;align-items:center;gap:12px;margin:20px 0 16px;font-size:14px}
 .or::before,.or::after{content:"";flex:1;border-top:1px solid #6b6d7a}
-body.phone .tabbar{height:80px;padding-bottom:16px}
-body.phone .foot{padding-bottom:30px}
-@media(max-width:600px){
-  .seg.view,.seg.lang,.tb span,.toolbar .tt span{display:none}
-  .lang-wrap{display:block}
-  .toolbar{padding:0 10px;gap:6px}
-  .tb{padding:0 10px;gap:6px}
-  .toolbar .tt{min-width:0;overflow:hidden}
-  .menu-wrap{position:static}
-  .flows{position:fixed;left:8px;right:8px;top:58px;width:auto;max-width:none}
-  .flows.langmenu{left:auto;width:200px}
-  .flows button{padding:13px 14px;font-size:14px}
-}
-@media(max-width:430px){.toolbar .tt .nm{display:none}}
 
 .screen{position:absolute;inset:var(--sb,0px) 0 0 0;display:none;flex-direction:column;background:var(--bg)}
 .screen.active{display:flex}
@@ -217,17 +162,36 @@ p{font-size:14px;line-height:24px}
 .link-btn{display:block;width:100%;text-align:center;font-weight:700;color:var(--primary-dark);padding:12px}
 
 /* Splash / login */
-#splash{background:#0f0f0f;align-items:center;justify-content:center;color:#fff;gap:24px}
-#splash .logo{color:#fff}#splash .logo svg{height:30px}#splash .logo>span{font-size:16px}
-.splash-logo{animation:splashIn .9s ease-out both,splashBreath 2.4s ease-in-out .9s infinite}
-.splash-load{position:absolute;left:50%;bottom:22%;width:132px;height:4px;margin-left:-66px;border-radius:2px;background:rgba(255,255,255,.18);overflow:hidden}
-.splash-load i{display:block;height:100%;width:100%;border-radius:2px;background:#fff;transform-origin:left center;animation:splashFill 2.6s cubic-bezier(.45,.05,.3,1) both}
-.splash-load::after{content:"";position:absolute;top:0;bottom:0;width:40px;left:-40px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:splashShine 1.2s linear infinite}
-@keyframes splashIn{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
-@keyframes splashBreath{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+#splash{background:#f6f6f2;align-items:center;justify-content:center;color:var(--text);gap:18px}
+/* Splash: cartão em traço preto + azul (mesmo estilo das ilustrações), selo de verificado e logo letra a letra */
+.sp-art{width:220px;height:160px;overflow:visible}
+.sp-card{transform-box:fill-box;transform-origin:center;animation:spCardIn .9s cubic-bezier(.2,1.35,.4,1) both,spFloat 2.6s ease-in-out .9s infinite alternate}
+.sp-line{transform-box:fill-box;transform-origin:left center;animation:spLine .45s ease-out both}
+.sp-line:nth-of-type(1){animation-delay:.55s}.sp-line:nth-of-type(2){animation-delay:.65s}.sp-line:nth-of-type(3){animation-delay:.75s}
+.sp-badge{transform-box:fill-box;transform-origin:center;animation:spPop .55s cubic-bezier(.3,1.7,.5,1) .8s both}
+.sp-check{stroke-dasharray:1;animation:spDraw .4s ease-out 1.15s both}
+.sp-spark path{transform-box:fill-box;transform-origin:center;animation:spTwinkle 1.6s ease-in-out 1s infinite both}
+.sp-spark path+path{animation-delay:1.4s}
+.sp-logo{color:var(--text)}
+.sp-logo svg{height:30px;overflow:visible}
+.sp-logo>span{font-size:16px;animation:spFade .5s ease-out 1.75s both}
+.sp-logo path{transform-box:fill-box;transform-origin:center bottom;animation:spLetter .5s cubic-bezier(.2,1.3,.4,1) both}
+.sp-logo path.v{stroke:currentColor;stroke-width:.5;stroke-dasharray:1;animation:spV .8s ease-out 1.05s both}
+.sp-logo path:nth-child(2){animation-delay:1.3s}.sp-logo path:nth-child(3){animation-delay:1.38s}.sp-logo path:nth-child(4){animation-delay:1.52s}
+.sp-logo path:nth-child(5){animation-delay:1.45s}.sp-logo path:nth-child(6){animation-delay:1.6s}
+.splash-load{position:absolute;left:50%;bottom:16%;width:120px;height:4px;margin-left:-60px;border-radius:2px;background:rgba(34,41,241,.14);overflow:hidden}
+.splash-load i{display:block;height:100%;width:100%;border-radius:2px;background:var(--primary);transform-origin:left center;animation:splashFill 3s cubic-bezier(.45,.05,.3,1) both}
+@keyframes spCardIn{0%{opacity:0;transform:translateY(-36px) rotate(-20deg) scale(.6)}100%{opacity:1;transform:translateY(0) rotate(-6deg) scale(1)}}
+@keyframes spFloat{from{transform:translateY(0) rotate(-6deg)}to{transform:translateY(-6px) rotate(-3deg)}}
+@keyframes spLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes spPop{0%{opacity:0;transform:scale(0) rotate(-30deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes spDraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes spTwinkle{0%,100%{transform:scale(.6);opacity:.35}50%{transform:scale(1.15);opacity:1}}
+@keyframes spV{0%{stroke-dashoffset:1;fill-opacity:0}65%{stroke-dashoffset:0;fill-opacity:0}100%{stroke-dashoffset:0;fill-opacity:1}}
+@keyframes spLetter{0%{opacity:0;transform:translateY(60%) scale(.8)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes spFade{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
 @keyframes splashFill{from{transform:scaleX(.04)}to{transform:scaleX(1)}}
-@keyframes splashShine{to{left:132px}}
-@media(prefers-reduced-motion:reduce){.splash-logo,.splash-load i,.splash-load::after{animation:none}}
+@media(prefers-reduced-motion:reduce){#splash *,#splash *::after{animation:none!important}}
 .brand{background:var(--surface);color:var(--text);height:140px;flex:none;display:flex;align-items:center;justify-content:center}
 .logo{display:inline-flex;align-items:flex-end;gap:6px;color:var(--text)}.logo svg{height:21px;width:auto;aspect-ratio:66/20}.logo>span{font-size:12px;line-height:1;padding-bottom:1px}
 .brand.sm{height:auto;padding:24px 16px;align-items:flex-start;justify-content:flex-start;flex-direction:column;gap:8px;color:#fff;background:var(--primary)}
@@ -345,38 +309,9 @@ p{font-size:14px;line-height:24px}
 .toast.show{opacity:1}
 </style>
 </head>
-<body class="phone">
-<header class="toolbar">
-  <div class="tt"><svg width="20" height="20" style="color:#3483ff"><use href="#i-wallet"/></svg><b class="nm">Valid Wallet</b> <span>· protótipo navegável</span></div>
-  <div class="menu-wrap">
-    <button class="tb" id="flowBtn" aria-haspopup="true" aria-expanded="false"><svg><use href="#i-flows"/></svg><span>Fluxos</span></button>
-    <div class="flows" id="flowMenu" role="menu"></div>
-  </div>
-  <div class="menu-wrap lang-wrap">
-    <button class="tb" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Idioma" title="Idioma"><svg><use href="#i-globe"/></svg><b id="langCode">EN</b></button>
-    <div class="flows langmenu" id="langMenu" role="menu">
-      <button role="menuitemradio" data-uilang="pt">Português</button>
-      <button role="menuitemradio" data-uilang="en" class="on">English</button>
-      <button role="menuitemradio" data-uilang="es">Español</button>
-    </div>
-  </div>
-  <div class="seg lang" role="group" aria-label="Language" title="Language / Idioma / Idioma">
-    <button data-uilang="pt" title="Português">PT</button>
-    <button data-uilang="en" title="English" class="on">EN</button>
-    <button data-uilang="es" title="Español">ES</button>
-  </div>
-  <div class="seg view" role="group" aria-label="Visualização">
-    <button id="vPhone" class="on"><svg><use href="#i-phone"/></svg>App</button>
-    <button id="vWeb"><svg><use href="#i-monitor"/></svg>Web</button>
-  </div>
-  <button class="tb" id="fsBtn" aria-label="Tela cheia" title="Tela cheia"><svg><use href="#i-expand"/></svg><span>Tela cheia</span></button>
-  <button class="tb" id="restartBtn"><svg><use href="#i-refresh"/></svg><span>Reiniciar</span></button>
-</header>
-<button id="fsExit" aria-label="Sair da tela cheia" title="Sair da tela cheia" hidden><svg><use href="#i-compress"/></svg></button>
+<body class="web">
 <main class="stage" id="stage">
 <div class="device" id="device">
-<div class="notch"></div>
-<div class="sb light" id="sb"><span>9:41</span><span class="r"><svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2.500" width="3" height="9.500" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg><svg viewBox="0 0 26 12"><rect x="0.500" y="0.500" width="22" height="11" rx="3.500" fill="none" stroke="currentColor" opacity=".5"/><rect x="2" y="2" width="19" height="8" rx="2"/><rect x="24" y="4" width="2" height="4" rx="1" opacity=".5"/></svg></span></div>
 <div class="app" id="app">
 
 <!-- ICONES (sprite) -->
@@ -420,8 +355,26 @@ p{font-size:14px;line-height:24px}
 </svg>
 
 <!-- ========== ONBOARDING ========== -->
-<section class="screen active" id="splash" data-auto="login" data-delay="2800">
-  <span class="logo splash-logo" role="img" aria-label="Valid Wallet"><svg viewBox="0 0 66 20"><use href="#i-logo"/></svg><span>Wallet</span></span>
+<section class="screen active" id="splash" data-auto="login" data-delay="3200">
+  <svg class="sp-art" viewBox="0 0 220 160" aria-hidden="true">
+    <g class="sp-card">
+      <rect x="40" y="38" width="144" height="92" rx="12" fill="#0f0f0f"/>
+      <rect x="32" y="30" width="144" height="92" rx="12" fill="#2229f1" stroke="#0f0f0f" stroke-width="4"/>
+      <rect x="46" y="48" width="34" height="40" rx="6" fill="#b9c8ff" stroke="#0f0f0f" stroke-width="3"/>
+      <circle cx="63" cy="62" r="7" fill="#0f0f0f"/>
+      <path d="M52 84c2-8 20-8 22 0" fill="#0f0f0f"/>
+      <rect class="sp-line" x="90" y="52" width="70" height="7" rx="3.5" fill="#b9c8ff" stroke="#0f0f0f" stroke-width="2.5"/>
+      <rect class="sp-line" x="90" y="67" width="52" height="7" rx="3.5" fill="#b9c8ff" stroke="#0f0f0f" stroke-width="2.5"/>
+      <rect class="sp-line" x="90" y="82" width="62" height="7" rx="3.5" fill="#b9c8ff" stroke="#0f0f0f" stroke-width="2.5"/>
+      <rect x="46" y="100" width="22" height="12" rx="3" fill="#f5d76e" stroke="#0f0f0f" stroke-width="2.5"/>
+    </g>
+    <g class="sp-badge">
+      <circle cx="176" cy="34" r="20" fill="#fff" stroke="#0f0f0f" stroke-width="4"/>
+      <path class="sp-check" pathLength="1" d="M166 34l7 7 13-14" fill="none" stroke="#2229f1" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g class="sp-spark" fill="#0f0f0f"><path d="M24 26l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/><path d="M200 120l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></g>
+  </svg>
+  <span class="logo sp-logo" role="img" aria-label="Valid Wallet"><svg viewBox="0 0 66 20"><path class="v" pathLength="1" d="M15.6372 0.0412183H19.3333L11.4294 19.6588H7.93233L0 0.0412183H3.80979L9.72351 15.1951L15.6372 0.0412183Z"/><path d="M29.8486 5.17023H33.0329V19.6588H29.8486V17.4127C28.5692 19.1471 26.8917 20 24.7594 20C22.7123 20 21.0065 19.2892 19.6418 17.8392C18.3055 16.3892 17.6231 14.5696 17.6231 12.4088C17.6231 10.2481 18.3055 8.45689 19.6418 7.00689C21.0065 5.5569 22.7123 4.81768 24.7594 4.81768C26.8917 4.81768 28.5692 5.67062 29.8486 7.40493V5.17023ZM28.5692 15.65C28.988 15.2225 29.3169 14.7155 29.5366 14.1588C29.7564 13.6021 29.8624 13.0071 29.8486 12.4088C29.8486 11.1294 29.4221 10.049 28.5692 9.1961C27.7163 8.31473 26.6643 7.88826 25.3849 7.88826C24.1055 7.88826 23.0251 8.31473 22.1722 9.1961C21.3192 10.049 20.8927 11.1294 20.8927 12.4088C20.8789 13.0071 20.985 13.6021 21.2047 14.1588C21.4244 14.7155 21.7534 15.2225 22.1722 15.65C23.0251 16.5029 24.1055 16.9294 25.3849 16.9294C26.6643 16.9294 27.7163 16.5029 28.5692 15.65Z"/><path d="M38.867 16.7304H41.4258V19.6588H35.6813V0H38.867V16.7304Z"/><path d="M62.0186 0H65.2029V19.6588H62.0186V17.4128C60.7392 19.1471 59.0618 20 56.9294 20C54.8824 20 53.1765 19.2892 51.8118 17.8392C50.4755 16.3892 49.7932 14.5696 49.7932 12.4088C49.7932 10.2481 50.4755 8.45689 51.8118 7.00689C53.1765 5.5569 54.8824 4.81768 56.9294 4.81768C59.0618 4.81768 60.7392 5.67062 62.0186 7.40493V0ZM60.7392 15.65C61.158 15.2225 61.4869 14.7155 61.7067 14.1588C61.9264 13.6021 62.0325 13.0071 62.0186 12.4088C62.0186 11.1294 61.5922 10.049 60.7392 9.1961C59.8863 8.31473 58.8343 7.88826 57.5549 7.88826C56.2755 7.88826 55.1951 8.31473 54.3422 9.1961C53.4892 10.049 53.0628 11.1294 53.0628 12.4088C53.0489 13.0071 53.155 13.6021 53.3747 14.1588C53.5945 14.7155 53.9234 15.2225 54.3422 15.65C55.1951 16.503 56.2755 16.9294 57.5549 16.9294C58.8343 16.9294 59.8863 16.503 60.7392 15.65Z"/><path d="M44.0131 8.07875H41.4784V5.14748H47.1419V19.6546H44.0145L44.0131 8.07875Z"/><path d="M45.2115 3.86666C46.2768 3.86666 47.1405 3.00299 47.1405 1.9376C47.1405 0.872208 46.2768 0.00853603 45.2115 0.00853603C44.1461 0.00853603 43.2824 0.872208 43.2824 1.9376C43.2824 3.00299 44.1461 3.86666 45.2115 3.86666Z"/></svg><span>Wallet</span></span>
   <div class="splash-load" role="progressbar" aria-label="Carregando"><i></i></div>
 </section>
 
@@ -818,10 +771,8 @@ p{font-size:14px;line-height:24px}
 
 <div class="toast" id="toast"></div>
 </div>
-<div class="homebar"></div>
 </div>
 </main>
-<footer class="sitefoot"><span>©&nbsp;<span id="yr">2026</span>&nbsp;Valid. Todos os direitos reservados. Protótipo confidencial, uso restrito e proibida a reprodução.</span></footer>
 <script src="protect.js"></script>
 <script src="i18n.js"></script>
 
@@ -997,7 +948,7 @@ p{font-size:14px;line-height:24px}
     clearTimeout(timer);stopCam();
     $$('.screen').forEach(function(s){s.classList.remove('active')});
     var el=$('#'+id); el.classList.add('active');
-    $('#sb').className='sb '+((id==='splash'?'dark':id==='home'?'blue':'light'));
+    var tc=$('meta[name="theme-color"]');if(tc)tc.setAttribute('content',id==='splash'?'#f6f6f2':id==='home'?'#2229f1':'#ffffff');
     $$('.sheet-wrap.open').forEach(function(s){s.classList.remove('open')});
     if(id==='manual-pass'){var mn=$('#mp-name input');if(mn&&!mn.value){mn.value=U().name;$('#mp-name').classList.add('has')}}
     if(id==='idioma')syncLangToggles();
@@ -1212,114 +1163,15 @@ p{font-size:14px;line-height:24px}
   function syncLangToggles(){$$('#langs button').forEach(function(b){$('.toggle',b).classList.toggle('on',b.getAttribute('data-lang')===LANG)})}
   function setLang(l){
     LANG=l;
-    $$('[data-uilang]').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-uilang')===l)});
-    $('#langCode').textContent=l.toUpperCase();
+    try{localStorage.setItem('vw-lang',l)}catch(_){}
+    document.documentElement.lang=l==='pt'?'pt-BR':l;
     syncLangToggles();applyLang();
   }
-  $$('[data-uilang]').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-uilang'));closeMenus()})});
 
   /* ===== Barra de ferramentas: fluxos, visualização e reinício ===== */
-  var FLOWS=[
-    {n:'Onboarding e login',d:'Splash, login e boas-vindas',id:'splash'},
-    {n:'Login por e-mail',d:'E-mail e senha',id:'login-email'},
-    {n:'Cadastro',d:'Criar conta com validação de campos',id:'signup'},
-    {n:'Login com Google',d:'Escolha de conta e permissões',id:'social-google'},
-    {n:'Login com Apple',d:'Nome, e-mail e Face ID',id:'social-apple'},
-    {n:'Criar credencial: passaporte manual',d:'Formulário do passaporte',id:'manual-pass'},
-    {n:'Criar credencial: dados pessoais',d:'Auto declaração de dados',id:'dados-form',tipo:'dados'},
-    {n:'Convite de credencial',d:'Leitura do QR do convite',id:'invite-scan'},
-    {n:'Credencial do evento',d:'Cartão com QR code (passe para o lado)',id:'cred',ev:1,v:'evento'},
-    {n:'Carteira cheia',d:'Passaporte, dados pessoais e credencial do evento',id:'home',w:1},
-    {n:'Carteira vazia',d:'Início sem credenciais',id:'home'},
-    {n:'Criar credencial',d:'Tipo, documento, rosto e confirmação',id:'tipo'},
-    {n:'Usar credencial',d:'Carteira, detalhe e Face ID',id:'cred',w:1},
-    {n:'Compartilhar dados',d:'QR, consentimento e confirmação',id:'scan',w:1},
-    {n:'Compartilhar sem credencial',d:'Erro de carteira vazia',id:'no-creds'},
-    {n:'Opções e idioma',d:'Menu de opções, idioma e termos',id:'opcoes',w:1}
-  ];
-  var fm=$('#flowMenu');
-  fm.innerHTML=FLOWS.map(function(f,i){return '<button role="menuitem" data-flow="'+i+'">'+f.n+'<small>'+f.d+'</small></button>'}).join('');
-  var langMenu=$('#langMenu');
-  function setMenu(menu,btn,open){menu.classList.toggle('open',open);btn.setAttribute('aria-expanded',open?'true':'false')}
-  function closeMenus(){setMenu(fm,$('#flowBtn'),false);setMenu(langMenu,$('#langBtn'),false)}
-  function closeFlows(){closeMenus()}
-  function toggleMenu(menu,btn,other,otherBtn){var o=!menu.classList.contains('open');setMenu(other,otherBtn,false);setMenu(menu,btn,o);if(o){var cur=menu.querySelector('.on');if(cur&&cur.scrollIntoView)cur.scrollIntoView({block:'nearest'})}}
-  $('#flowBtn').addEventListener('click',function(e){e.stopPropagation();toggleMenu(fm,this,langMenu,$('#langBtn'))});
-  $('#langBtn').addEventListener('click',function(e){e.stopPropagation();toggleMenu(langMenu,this,fm,$('#flowBtn'))});
-  document.addEventListener('click',function(e){if(!e.target.closest('.menu-wrap'))closeMenus()});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenus()});
-  var lastW=window.innerWidth;
-  window.addEventListener('resize',function(){if(window.innerWidth!==lastW){lastW=window.innerWidth;closeMenus()}});   /* só fecha ao mudar a largura (girar a tela), não quando a barra do navegador esconde */
-  window.addEventListener('orientationchange',closeMenus);
-  fm.addEventListener('click',function(e){
-    var b=e.target.closest('[data-flow]');if(!b)return;
-    var f=FLOWS[+b.getAttribute('data-flow')];
-    state.user=null;state.dd=null;state.pass=null;state.use=null;state.passaporte=state.dados=!!f.w;state.evento=!!(f.w||f.ev);state.tipo=f.tipo||'passaporte';view=f.v||'passaporte';
-    stack=f.id==='splash'?['splash']:/^(login-email|signup|social-google|social-apple)$/.test(f.id)?['login',f.id]:f.id==='home'?['home']:f.id==='tipo'?['home','tipo']:f.id==='dados-form'?['home','tipo','dados-form']:f.id==='manual-pass'?['home','tipo','como','val-doc','manual-pass']:f.id==='confirm'?['home','tipo','confirm']:['home',f.id];
-    closeFlows();show(f.id);
-  });
-  $('#restartBtn').addEventListener('click',function(){
-    try{history.replaceState(null,'',location.pathname)}catch(_){}
-    location.reload();
-  });
-
-  var body=document.body, dev=$('#device'), stage=$('#stage');
-  function savedMode(){
-    var q=/[?&]view=(web|phone)/.exec(location.search);if(q)return q[1];
-    try{return localStorage.getItem('vw-view')}catch(_){return null}
-  }
-  function setMode(m,persist){
-    if(window.innerWidth<=600)m='web';
-    body.classList.toggle('web',m==='web');body.classList.toggle('phone',m!=='web');
-    $('#vPhone').classList.toggle('on',m!=='web');$('#vWeb').classList.toggle('on',m==='web');
-    if(persist){try{localStorage.setItem('vw-view',m)}catch(_){}}
-    fit();
-  }
-  function fit(){
-    if(body.classList.contains('web')){dev.style.transform='';return}
-    var s=Math.min(1,(stage.clientHeight-24)/808,(stage.clientWidth-24)/388);
-    dev.style.transform='scale('+s+')';
-  }
-  $('#vPhone').addEventListener('click',function(){setMode('phone',true);if(window.innerWidth>600&&!body.classList.contains('full'))enterFull()});
-  $('#vWeb').addEventListener('click',function(){setMode('web',true)});
-  window.addEventListener('resize',function(){setMode(savedMode()||'phone')});
-  /* Tela cheia: usa a API nativa quando existe; senão (ex.: iPhone) esconde o cabeçalho e o rodapé */
-  var rootEl=document.documentElement, nativeFs=false;
-  var fsEl=function(){return document.fullscreenElement||document.webkitFullscreenElement||null};
-  function setFull(on){
-    body.classList.toggle('full',on);
-    $('#fsExit').hidden=!on;
-    fit();setTimeout(fit,250);
-  }
-  function enterFull(){
-    setFull(true);
-    var req=rootEl.requestFullscreen||rootEl.webkitRequestFullscreen;
-    if(req){
-      try{var r=req.call(rootEl,{navigationUI:'hide'});nativeFs=true;if(r&&r.catch)r.catch(function(){nativeFs=false})}catch(_){nativeFs=false}
-    }
-  }
-  function exitFull(){
-    nativeFs=false;
-    if(fsEl()){var ex=document.exitFullscreen||document.webkitExitFullscreen;try{var r=ex.call(document);if(r&&r.catch)r.catch(function(){})}catch(_){}}
-    setFull(false);
-  }
-  $('#fsBtn').addEventListener('click',function(){body.classList.contains('full')?exitFull():enterFull()});
-  $('#fsExit').addEventListener('click',exitFull);
-  ['fullscreenchange','webkitfullscreenchange'].forEach(function(ev){document.addEventListener(ev,function(){if(!fsEl()&&nativeFs&&body.classList.contains('full')){nativeFs=false;setFull(false)}})});
-  /* ?full=1 abre já em tela cheia (o navegador só libera a tela cheia nativa depois do primeiro toque) */
-  if(/[?&]full=1/.test(location.search)){
-    setFull(true);
-    var firstTap=function(){document.removeEventListener('pointerdown',firstTap,true);var rq=rootEl.requestFullscreen||rootEl.webkitRequestFullscreen;if(rq&&!fsEl()){try{nativeFs=true;var r=rq.call(rootEl,{navigationUI:'hide'});if(r&&r.catch)r.catch(function(){nativeFs=false})}catch(_){nativeFs=false}}};
-    document.addEventListener('pointerdown',firstTap,true);
-  }
-  /* App instalado (PWA): abre direto em tela cheia, sem o cabeçalho do protótipo */
-  var isApp=(window.matchMedia&&(matchMedia('(display-mode: standalone)').matches||matchMedia('(display-mode: fullscreen)').matches))||navigator.standalone===true;
-  if(isApp){body.classList.add('pwa');setFull(true)}
   if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){
     window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})});
   }
-  $('#yr').textContent=new Date().getFullYear();
-  setMode(savedMode()||'phone');
 
   document.addEventListener('input',function(e){
     if(e.target.getAttribute&&e.target.getAttribute('data-mask')==='date'){var d=e.target.value.replace(/\D/g,'').slice(0,8);e.target.value=d.length>4?d.slice(0,2)+'/'+d.slice(2,4)+'/'+d.slice(4):d.length>2?d.slice(0,2)+'/'+d.slice(2):d}
@@ -1362,7 +1214,9 @@ p{font-size:14px;line-height:24px}
   if(start&&$('#'+start)){state.passaporte=state.dados=state.evento=/^(cred|scan|share|shared|opcoes|idioma)$/.test(start);stack=['home',start];show(start)}
   else show('splash');
   var ql=/[?&]lang=(pt|en|es)/.exec(location.search);
-  setLang(ql?ql[1]:'en');
+  var saved=null;try{saved=localStorage.getItem('vw-lang')}catch(_){}
+  var dev=(navigator.language||'pt').slice(0,2).toLowerCase();
+  setLang(ql?ql[1]:/^(pt|en|es)$/.test(saved||'')?saved:/^(en|es)$/.test(dev)?dev:'pt');
 })();
 </script>
 </body>
