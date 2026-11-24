@@ -287,6 +287,16 @@ window.I18N=[
 ['QR, consentimento e confirmação','QR, consent and confirmation','QR, consentimiento y confirmación'],
 ['Opções e idioma','Options and language','Opciones e idioma'],
 ['Menu de opções, idioma e termos','Options menu, language and terms','Menú de opciones, idioma y términos'],
+/* Notificações */
+['Notificações','Notifications','Notificaciones'],
+['Adicione sua primeira credencial','Add your first credential','Agrega tu primera credencial'],
+['Cadastre seu passaporte ou seus dados pessoais para compartilhar com segurança.','Register your passport or personal data to share securely.','Registra tu pasaporte o tus datos personales para compartir con seguridad.'],
+['Proteja sua carteira','Protect your wallet','Protege tu billetera'],
+['Ative as proteções de uso em Opções para deixar sua carteira ainda mais segura.','Turn on usage protections in Options to make your wallet even safer.','Activa las protecciones de uso en Opciones para que tu billetera sea aún más segura.'],
+['Boas-vindas à Valid Wallet','Welcome to Valid Wallet','Bienvenido a Valid Wallet'],
+['Sua carteira digital está pronta. Guarde documentos e compartilhe só o necessário.','Your digital wallet is ready. Store documents and share only what is needed.','Tu billetera digital está lista. Guarda documentos y comparte solo lo necesario.'],
+['Agora','Now','Ahora'],
+['Hoje','Today','Hoy'],
 /* Cortina de proteção */
 ['Conteúdo protegido','Protected content','Contenido protegido'],
 ['Volte para esta janela para continuar.','Return to this window to continue.','Vuelve a esta ventana para continuar.'],
