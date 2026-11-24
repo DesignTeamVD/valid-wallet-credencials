@@ -2,7 +2,7 @@
    Rede primeiro: com internet, sempre carrega a versão publicada mais recente.
    Sem internet, usa a cópia guardada, então o protótipo abre offline.
    Mude VERSION a cada publicação para descartar as cópias antigas. */
-var VERSION = 'valid-v1';
+var VERSION = 'valid-v2';
 var SHELL = [
   './',
   'i18n.js',
@@ -17,8 +17,12 @@ var SHELL = [
   'icon-maskable-512.png',
   'assets/foto.png',
   'assets/logo-icon.svg',
-  'assets/logo.svg',
-  'assets/mail.svg',
+  'assets/fonts/Satoshi-Regular.woff2',
+  'assets/fonts/Satoshi-Medium.woff2',
+  'assets/fonts/Satoshi-Bold.woff2',
+  'assets/ilustras/carteira.webp',
+  'assets/ilustras/documentos.webp',
+  'assets/ilustras/verificado.webp',
   'assets/qrcode.png'
 ];
 var FONT_HOSTS = ['fonts.googleapis.com', 'fonts.gstatic.com'];

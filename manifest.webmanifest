@@ -2,19 +2,42 @@
   "id": "/",
   "name": "Valid Wallet",
   "short_name": "Valid Wallet",
-  "description": "Protótipo da carteira de credenciais digitais Valid Wallet.",
+  "description": "Carteira digital da Valid para identidade, credenciais e itens sensíveis do dia a dia.",
   "lang": "pt-BR",
   "start_url": "/?app=1",
   "scope": "/",
   "display": "standalone",
-  "display_override": ["standalone", "minimal-ui"],
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
   "orientation": "portrait",
-  "background_color": "#0e1b80",
-  "theme_color": "#0e1b80",
+  "background_color": "#f9f9f9",
+  "theme_color": "#2229f1",
   "icons": [
-    { "src": "favicon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
-    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ]
 }
