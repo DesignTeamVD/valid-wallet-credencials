@@ -176,7 +176,7 @@ p{font-size:14px;line-height:24px}
 .sp-logo svg{height:30px;overflow:visible}
 .sp-logo>span{font-size:16px;animation:spFade .5s ease-out 1.75s both}
 .sp-logo path{transform-box:fill-box;transform-origin:center bottom;animation:spLetter .5s cubic-bezier(.2,1.3,.4,1) both}
-.sp-logo path.v{stroke:currentColor;stroke-width:.5;stroke-dasharray:1;animation:spV .8s ease-out 1.05s both}
+.sp-logo path.v{stroke:currentColor;stroke-width:0;stroke-dasharray:1;animation:spV .8s ease-out 1.05s both}
 .sp-logo path:nth-child(2){animation-delay:1.3s}.sp-logo path:nth-child(3){animation-delay:1.38s}.sp-logo path:nth-child(4){animation-delay:1.52s}
 .sp-logo path:nth-child(5){animation-delay:1.45s}.sp-logo path:nth-child(6){animation-delay:1.6s}
 .splash-load{position:absolute;left:50%;bottom:16%;width:120px;height:4px;margin-left:-60px;border-radius:2px;background:rgba(34,41,241,.14);overflow:hidden}
@@ -187,7 +187,7 @@ p{font-size:14px;line-height:24px}
 @keyframes spPop{0%{opacity:0;transform:scale(0) rotate(-30deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
 @keyframes spDraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
 @keyframes spTwinkle{0%,100%{transform:scale(.6);opacity:.35}50%{transform:scale(1.15);opacity:1}}
-@keyframes spV{0%{stroke-dashoffset:1;fill-opacity:0}65%{stroke-dashoffset:0;fill-opacity:0}100%{stroke-dashoffset:0;fill-opacity:1}}
+@keyframes spV{0%{stroke-dashoffset:1;fill-opacity:0;stroke-width:.5}65%{stroke-dashoffset:0;fill-opacity:0;stroke-width:.5}100%{stroke-dashoffset:0;fill-opacity:1;stroke-width:0}}
 @keyframes spLetter{0%{opacity:0;transform:translateY(60%) scale(.8)}100%{opacity:1;transform:translateY(0) scale(1)}}
 @keyframes spFade{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
 @keyframes splashFill{from{transform:scaleX(.04)}to{transform:scaleX(1)}}
