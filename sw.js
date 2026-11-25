@@ -2,11 +2,10 @@
    Rede primeiro: com internet, sempre carrega a versão publicada mais recente.
    Sem internet, usa a cópia guardada, então o protótipo abre offline.
    Mude VERSION a cada publicação para descartar as cópias antigas. */
-var VERSION = 'valid-v9';
+var VERSION = 'valid-v10';
 var SHELL = [
   './',
   'i18n.js',
-  'protect.js',
   'manifest.webmanifest',
   'favicon.ico',
   'favicon-32.png',

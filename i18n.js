@@ -358,12 +358,6 @@ window.I18N=[
 ['Você está em dia.','You are all caught up.','Estás al día.'],
 ['Agora','Now','Ahora'],
 ['Hoje','Today','Hoy'],
-/* Cortina de proteção */
-['Conteúdo protegido','Protected content','Contenido protegido'],
-['Volte para esta janela para continuar.','Return to this window to continue.','Vuelve a esta ventana para continuar.'],
-['Captura de tela bloqueada','Screen capture blocked','Captura de pantalla bloqueada'],
-['Impressão bloqueada','Printing blocked','Impresión bloqueada'],
-['Ferramentas de desenvolvedor detectadas','Developer tools detected','Herramientas de desarrollador detectadas'],
 /* Rodapé */
 ['Valid. Todos os direitos reservados. Protótipo confidencial, uso restrito e proibida a reprodução.','Valid. All rights reserved. Confidential prototype, restricted use, reproduction prohibited.','Valid. Todos los derechos reservados. Prototipo confidencial, uso restringido y prohibida su reproducción.']
 ];
