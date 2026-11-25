@@ -332,6 +332,13 @@ p{font-size:14px;line-height:24px}
 .toggle::after{content:"";position:absolute;left:4px;top:4px;width:24px;height:24px;border-radius:50%;background:#fff;transition:.2s}
 .toggle.on{background:var(--primary-dark)}
 .toggle.on::after{left:28px}
+.doc{padding:20px 16px}
+.doc h3{font-family:'Satoshi','Open Sans',system-ui,sans-serif;font-size:16px;line-height:24px;font-weight:700;margin:20px 0 6px}
+.doc h3:first-of-type{margin-top:12px}
+.doc p{font-size:14px;line-height:22px;color:#33343b}
+.doc p+p{margin-top:8px}
+.doc .doc-meta{font-size:12px;line-height:18px;color:var(--muted)}
+.doc-brand{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
 .prot-hero{display:flex;align-items:center;gap:16px;margin:16px;padding:16px;border-radius:var(--r);background:var(--surface)}
 .prot-hero .shield{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;background:#e3efe2;color:#225a1e;transition:.2s}
 .prot-hero .shield svg{width:30px;height:30px}
@@ -552,13 +559,50 @@ p{font-size:14px;line-height:24px}
 
 <section class="screen" id="terms">
   <div class="bar"><button class="back" data-back><svg width="24" height="24"><use href="#i-back"/></svg></button>Termos e condições de uso</div>
-  <div class="body"><div class="card stack" style="gap:2px">
-    <b style="font-size:16px;line-height:26px">Uso pessoal e intransferível</b>
-    <p style="font-size:15px;line-height:30px">Ao seguir com esta solicitação, você declara estar ciente de que o certificado digital em nuvem é de uso pessoal e intransferível, e que seu uso depende da validação das informações fornecidas no processo de emissão.</p>
-    <b style="font-size:16px;line-height:26px">Autenticação e responsabilidade</b>
-    <p style="font-size:15px;line-height:30px">Você também reconhece que a autenticação e a assinatura digital realizadas por meio da solução VIDaaS exigem confirmação de identidade e devem ser utilizadas de forma segura, sob sua exclusiva responsabilidade.</p>
-    <b style="font-size:16px;line-height:26px">Item 03 do termo de uso</b>
-    <p style="font-size:15px;line-height:30px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+  <div class="body"><div class="card doc">
+    <p class="doc-meta">Última atualização: 25 de novembro de 2026</p>
+    <h3>1. Aceitação dos termos</h3>
+    <p>Ao criar uma conta ou utilizar a Valid Wallet, você declara que leu, compreendeu e concorda integralmente com estes Termos e Condições de Uso e com a Política de Privacidade. Caso não concorde com qualquer disposição, não utilize o aplicativo.</p>
+    <h3>2. Definições</h3>
+    <p>Para fins destes Termos: (i) "Usuário" é a pessoa física titular da conta; (ii) "Credencial" é o registro digital de dados pessoais ou documentos emitido ou validado por uma fonte confiável; (iii) "Parceiro" é a empresa ou órgão que solicita o compartilhamento de dados por meio do aplicativo.</p>
+    <h3>3. Cadastro e conta</h3>
+    <p>O uso da Valid Wallet requer cadastro com informações verdadeiras, completas e atualizadas. A conta é pessoal e intransferível, e o Usuário é responsável por manter a confidencialidade de suas credenciais de acesso, incluindo senha, código de acesso e biometria.</p>
+    <h3>4. Uso permitido</h3>
+    <p>O Usuário se compromete a utilizar o aplicativo apenas para fins lícitos e pessoais, sendo vedado: (a) inserir dados de terceiros sem autorização; (b) tentar burlar mecanismos de segurança; (c) copiar, modificar ou realizar engenharia reversa do aplicativo; e (d) utilizar a plataforma para fraudes ou atividades que violem a legislação vigente.</p>
+    <h3>5. Credenciais e documentos</h3>
+    <p>As credenciais armazenadas na carteira têm a validade definida por seus emissores. A Valid não se responsabiliza pelo conteúdo das credenciais emitidas por terceiros, cabendo ao Usuário verificar a exatidão de seus dados e solicitar a correção diretamente ao emissor quando necessário.</p>
+    <h3>6. Compartilhamento de dados</h3>
+    <p>Nenhum dado é compartilhado sem o consentimento expresso do Usuário. A cada solicitação, o aplicativo informa quais dados serão enviados e a qual Parceiro, permitindo que o Usuário aceite ou recuse. O tratamento posterior dos dados recebidos é de responsabilidade do Parceiro.</p>
+    <h3>7. Privacidade e proteção de dados</h3>
+    <p>Os dados pessoais são tratados em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018). O Usuário pode, a qualquer momento, solicitar acesso, correção, portabilidade ou exclusão de seus dados, bem como revogar consentimentos concedidos, nos termos da Política de Privacidade.</p>
+    <h3>8. Segurança</h3>
+    <p>A Valid adota medidas técnicas e administrativas para proteger as informações armazenadas, como criptografia e autenticação biométrica. O Usuário deve manter o aparelho protegido e comunicar imediatamente qualquer suspeita de acesso indevido, perda ou roubo do dispositivo.</p>
+    <h3>9. Limitação de responsabilidade</h3>
+    <p>O aplicativo é disponibilizado no estado em que se encontra. A Valid não será responsável por danos decorrentes de uso indevido, falhas de conexão, indisponibilidade de serviços de terceiros ou de atos praticados por Parceiros, ressalvadas as hipóteses previstas em lei.</p>
+    <h3>10. Propriedade intelectual</h3>
+    <p>Todos os direitos sobre o aplicativo, incluindo marcas, logotipos, layouts e códigos, pertencem à Valid ou a seus licenciadores. O uso da Valid Wallet não concede ao Usuário qualquer direito de propriedade intelectual sobre esses elementos.</p>
+    <h3>11. Alterações e encerramento</h3>
+    <p>Estes Termos podem ser atualizados periodicamente, e o Usuário será notificado sobre alterações relevantes. O Usuário pode encerrar sua conta a qualquer momento, e a Valid poderá suspender ou cancelar contas que violem estes Termos.</p>
+    <h3>12. Legislação e foro</h3>
+    <p>Estes Termos são regidos pelas leis da República Federativa do Brasil. Fica eleito o foro do domicílio do Usuário para dirimir quaisquer controvérsias decorrentes deste instrumento.</p>
+  </div></div>
+  <div class="foot"><button class="btn primary" data-back>Voltar</button></div>
+</section>
+
+<section class="screen" id="sobre">
+  <div class="bar"><button class="back" data-back><svg width="24" height="24"><use href="#i-back"/></svg></button>Sobre a Valid Wallet</div>
+  <div class="body"><div class="card doc">
+    <div class="doc-brand"><span class="logo" role="img" aria-label="Valid Wallet"><svg viewBox="0 0 66 20"><use href="#i-logo"/></svg><span>Wallet</span></span><span class="doc-meta">Versão 1.0.0</span></div>
+    <h3>O que é a Valid Wallet</h3>
+    <p>A Valid Wallet é a sua carteira digital para guardar documentos e credenciais com segurança. Passaporte, dados pessoais e credenciais de eventos ficam organizados em um só lugar e acessíveis quando e onde você precisar.</p>
+    <h3>Credenciais verificáveis</h3>
+    <p>Cada credencial é assinada digitalmente por quem a emitiu. Assim, quem recebe seus dados consegue confirmar que eles são autênticos e não foram alterados, sem precisar de uma foto ou cópia do documento físico.</p>
+    <h3>Compartilhe só o necessário</h3>
+    <p>Você escolhe quais informações enviar em cada solicitação. Para comprovar sua idade, por exemplo, não é preciso expor seu documento inteiro: basta compartilhar o dado que foi pedido.</p>
+    <h3>Seus dados com você</h3>
+    <p>As credenciais ficam guardadas no seu aparelho, protegidas por biometria e pelos métodos da Central de proteção. Nada é enviado sem o seu consentimento, e você pode revogar um documento a qualquer momento.</p>
+    <h3>Feito pela Valid</h3>
+    <p>A Valid é uma empresa de tecnologia especializada em identificação e segurança digital, com soluções para governos, bancos e empresas de telecomunicações. A Valid Wallet reúne essa experiência em um aplicativo simples para o dia a dia.</p>
   </div></div>
   <div class="foot"><button class="btn primary" data-back>Voltar</button></div>
 </section>
@@ -810,7 +854,7 @@ p{font-size:14px;line-height:24px}
     <div class="menu">
       <button data-go="protecao"><span class="ico-circle"><svg><use href="#i-shield"/></svg></span><span>Central de proteção</span><svg class="chev"><use href="#i-chev"/></svg></button>
       <button data-go="idioma"><span class="ico-circle"><svg><use href="#i-globe"/></svg></span><span>Idioma</span><svg class="chev"><use href="#i-chev"/></svg></button>
-      <button data-toast="Valid Wallet · protótipo navegável"><span class="ico-circle"><svg><use href="#i-info"/></svg></span><span>Sobre</span><svg class="chev"><use href="#i-chev"/></svg></button>
+      <button data-go="sobre"><span class="ico-circle"><svg><use href="#i-info"/></svg></span><span>Sobre</span><svg class="chev"><use href="#i-chev"/></svg></button>
       <button data-go="terms"><span class="ico-circle"><svg><use href="#i-book"/></svg></span><span>Termos e condições de uso</span><svg class="chev"><use href="#i-chev"/></svg></button>
     </div>
     <div style="padding:24px 16px"><button class="btn danger" data-go="login" data-reset-stack ><svg><use href="#i-door"/></svg>Sair</button></div>
