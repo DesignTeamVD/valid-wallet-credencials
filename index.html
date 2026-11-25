@@ -1113,6 +1113,15 @@ p{font-size:14px;line-height:24px}
     protSync();toast(prot[k]?'Proteção ativada':'Proteção desativada');
   });
 
+  /* Topo do app instalado: o iOS 26 desfoca a faixa da barra de status usando a cor de fundo da página,
+     e o Android usa o theme-color. Os dois passam a seguir a cor do topo da tela atual (--top). */
+  var desk=window.matchMedia&&matchMedia('(hover:hover) and (pointer:fine)').matches;
+  function paintTop(screen){
+    var c=(getComputedStyle(screen).getPropertyValue('--top')||'').trim()||'#ffffff';
+    var tc=$('meta[name="theme-color"]');if(tc)tc.setAttribute('content',c);
+    if(!desk){document.documentElement.style.backgroundColor=c;document.body.style.backgroundColor=c}
+  }
+
   /* Abas inferiores */
   function renderTabs(){
     $$('.tabbar').forEach(function(t){
@@ -1127,7 +1136,7 @@ p{font-size:14px;line-height:24px}
     clearTimeout(timer);stopCam();
     $$('.screen').forEach(function(s){s.classList.remove('active')});
     var el=$('#'+id); el.classList.add('active');
-    var tc=$('meta[name="theme-color"]');if(tc)tc.setAttribute('content',id==='splash'?'#f6f6f2':id==='home'?'#2229f1':'#ffffff');
+    paintTop(el);
     $$('.sheet-wrap.open').forEach(function(s){s.classList.remove('open')});
     if(id==='manual-pass'){var mn=$('#mp-name input');if(mn&&!mn.value){mn.value=U().name;$('#mp-name').classList.add('has')}}
     if(id==='idioma')syncLangToggles();
