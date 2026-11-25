@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="theme-color" content="#f9f9f9">
+<meta name="theme-color" content="#f6f6f2">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -42,14 +42,13 @@ img{pointer-events:none}
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%}
-body{font-family:'Open Sans',system-ui,sans-serif;color:var(--text);background:#eef0f4;display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden}
+body{font-family:'Open Sans',system-ui,sans-serif;color:var(--text);background:var(--bg);display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden}
 
 /* Layout PWA: ocupa a tela toda no celular; no navegador do computador, coluna de no máximo 360px */
 .stage{flex:1;min-height:0;display:flex;justify-content:center;overflow:hidden;position:relative}
 .device{position:relative;width:100%;height:100%}
 .app{position:relative;width:100%;height:100%;background:var(--bg);overflow:hidden}
-@media (hover:hover) and (pointer:fine){.device{max-width:360px}.app{box-shadow:0 0 0 1px var(--line),0 10px 40px rgba(15,15,15,.06)}}
-@media (display-mode:standalone),(display-mode:fullscreen){body{padding-bottom:env(safe-area-inset-bottom)}}
+@media (hover:hover) and (pointer:fine){.device{max-width:360px}}
 body.web .sheet{max-width:none}
 
 /* Onboarding: barra sobre o azul, campos com placeholder, cadastro e login social */
@@ -123,7 +122,11 @@ body.web .sheet{max-width:none}
 .or{display:flex;align-items:center;gap:12px;margin:20px 0 16px;font-size:14px}
 .or::before,.or::after{content:"";flex:1;border-top:1px solid #6b6d7a}
 
-.screen{position:absolute;inset:var(--sb,0px) 0 0 0;display:none;flex-direction:column;background:var(--bg)}
+.screen{position:absolute;inset:0;display:none;flex-direction:column;background:var(--bg);padding-top:env(safe-area-inset-top,0px)}
+/* App instalado: a área da barra de status recebe a cor do topo de cada tela (sem conteúdo por trás do vidro do sistema) */
+.screen::before{content:"";position:absolute;top:0;left:0;right:0;height:env(safe-area-inset-top,0px);background:var(--top,var(--surface));z-index:6;pointer-events:none}
+#home{--top:var(--primary)}
+#splash,#welcome{--top:#f6f6f2}
 .screen.active{display:flex}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:inherit}
 
@@ -133,7 +136,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
 .bar.center{justify-content:center}
 .body{flex:1;overflow-y:auto;padding:16px}
 .body.flush{padding:0}
-.foot{flex:none;background:var(--surface);border-top:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:16px}
+.foot{flex:none;background:var(--surface);border-top:1px solid var(--line);padding:16px 16px calc(16px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:16px}
 
 /* Tipografia */
 h1,h2,.btn,.bar,.obar,.link-btn,.cred-head,.tabbar button,.logo>span{font-family:'Satoshi','Open Sans',system-ui,sans-serif}
@@ -304,7 +307,7 @@ p{font-size:14px;line-height:24px}
 .empty .row{display:flex;gap:16px;align-items:center;margin-bottom:12px}
 .empty b{font-size:14px}
 .empty small{display:block;font-size:12px;color:var(--muted)}
-.tabbar{flex:none;height:64px;background:var(--surface);border-top:1px solid var(--line);display:flex}
+.tabbar{flex:none;height:calc(64px + env(safe-area-inset-bottom,0px));padding-bottom:env(safe-area-inset-bottom,0px);background:var(--surface);border-top:1px solid var(--line);display:flex}
 .tabbar button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:11px;color:var(--muted)}
 .tabbar button svg{width:24px;height:24px}
 .tabbar button.on{color:var(--primary);font-weight:700}
@@ -313,7 +316,7 @@ p{font-size:14px;line-height:24px}
 /* Modal */
 .sheet-wrap{position:absolute;inset:0;background:rgba(0,0,0,.55);display:none;align-items:flex-end;z-index:10}
 .sheet-wrap.open{display:flex}
-.sheet{background:var(--surface);width:100%;border-radius:20px 20px 0 0;padding:16px;display:flex;flex-direction:column;gap:12px}
+.sheet{background:var(--surface);width:100%;border-radius:20px 20px 0 0;padding:16px 16px calc(16px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:12px}
 .sheet .x{align-self:flex-end;width:24px;height:24px;position:absolute;right:16px;top:16px}
 .sheet .face{width:50px;height:50px;color:var(--primary);margin:0 auto}
 
@@ -353,7 +356,7 @@ p{font-size:14px;line-height:24px}
 .flag{box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
 .flag svg{width:56px;height:40px;flex:none}
 
-.toast{position:absolute;left:16px;right:16px;bottom:88px;background:#222;color:#fff;border-radius:var(--r);padding:12px 16px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:20}
+.toast{position:absolute;left:16px;right:16px;bottom:calc(88px + env(safe-area-inset-bottom,0px));background:#222;color:#fff;border-radius:var(--r);padding:12px 16px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:20}
 .toast.show{opacity:1}
 </style>
 </head>
