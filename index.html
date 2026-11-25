@@ -332,8 +332,26 @@ p{font-size:14px;line-height:24px}
 .toggle::after{content:"";position:absolute;left:4px;top:4px;width:24px;height:24px;border-radius:50%;background:#fff;transition:.2s}
 .toggle.on{background:var(--primary-dark)}
 .toggle.on::after{left:28px}
+.prot-hero{display:flex;align-items:center;gap:16px;margin:16px;padding:16px;border-radius:var(--r);background:var(--surface)}
+.prot-hero .shield{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;background:#e3efe2;color:#225a1e;transition:.2s}
+.prot-hero .shield svg{width:30px;height:30px}
+.prot-hero b{display:block;font-size:16px;line-height:22px}
+.prot-hero p{font-size:13px;color:var(--muted);margin-top:2px}
+.prot-hero.warn .shield{background:#fff1cc;color:#8a5a00}
+.prot-hero.off .shield{background:#f6dede;color:#6b1414}
+.prot-meter{display:flex;gap:4px;margin-top:10px}
+.prot-meter i{flex:1;height:4px;border-radius:2px;background:var(--line);transition:.2s}
+.prot-meter i.on{background:#225a1e}
+.prot-hero.warn .prot-meter i.on{background:#c98a00}
+.prot-hero.off .prot-meter i.on{background:#6b1414}
+.prot-h{padding:8px 16px 8px;font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.menu button.prot{align-items:center}
+.prot>span:not(.ico-circle) b{display:block;font-size:14px;line-height:20px}
+.prot>span:not(.ico-circle) small{display:block;font-size:12px;line-height:17px;color:var(--muted);margin-top:2px}
+.prot-note{padding:16px;font-size:12px;line-height:18px;color:var(--muted)}
 .flag{width:40px;height:40px;border-radius:50%;overflow:hidden;flex:none;background:#f3f3f3;display:flex;align-items:center;justify-content:center}
-.flag svg{width:22px;height:16px}
+.flag{box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.flag svg{width:56px;height:40px;flex:none}
 
 .toast{position:absolute;left:16px;right:16px;bottom:88px;background:#222;color:#fff;border-radius:var(--r);padding:12px 16px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:20}
 .toast.show{opacity:1}
@@ -348,6 +366,7 @@ p{font-size:14px;line-height:24px}
 <svg width="0" height="0" style="position:absolute">
   <symbol id="i-wallet-fill" viewBox="0 0 256 256" fill="currentColor"><path d="M216,64H56a8,8,0,0,1,0-16H192a8,8,0,0,0,0-16H56A24,24,0,0,0,32,56V184a24,24,0,0,0,24,24H216a16,16,0,0,0,16-16V80A16,16,0,0,0,216,64Zm-36,80a12,12,0,1,1,12-12A12,12,0,0,1,180,144Z"/></symbol><symbol id="i-qr-fill" viewBox="0 0 256 256" fill="currentColor"><path d="M120,56v48a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V56A16,16,0,0,1,56,40h48A16,16,0,0,1,120,56Zm-16,80H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm96-96H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40ZM144,184a8,8,0,0,0,8-8V144a8,8,0,0,0-16,0v32A8,8,0,0,0,144,184Zm64-32H184v-8a8,8,0,0,0-16,0v56H144a8,8,0,0,0,0,16h32a8,8,0,0,0,8-8V168h24a8,8,0,0,0,0-16Zm0,32a8,8,0,0,0-8,8v16a8,8,0,0,0,16,0V192A8,8,0,0,0,208,184Z"/></symbol><symbol id="i-gear-fill" viewBox="0 0 256 256" fill="currentColor"><path d="M237.94,107.21a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A111.92,111.92,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.63a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"/></symbol><symbol id="i-logo" viewBox="0 0 66 20" fill="currentColor"><path d="M15.6372 0.0412183H19.3333L11.4294 19.6588H7.93233L0 0.0412183H3.80979L9.72351 15.1951L15.6372 0.0412183Z"/><path d="M29.8486 5.17023H33.0329V19.6588H29.8486V17.4127C28.5692 19.1471 26.8917 20 24.7594 20C22.7123 20 21.0065 19.2892 19.6418 17.8392C18.3055 16.3892 17.6231 14.5696 17.6231 12.4088C17.6231 10.2481 18.3055 8.45689 19.6418 7.00689C21.0065 5.5569 22.7123 4.81768 24.7594 4.81768C26.8917 4.81768 28.5692 5.67062 29.8486 7.40493V5.17023ZM28.5692 15.65C28.988 15.2225 29.3169 14.7155 29.5366 14.1588C29.7564 13.6021 29.8624 13.0071 29.8486 12.4088C29.8486 11.1294 29.4221 10.049 28.5692 9.1961C27.7163 8.31473 26.6643 7.88826 25.3849 7.88826C24.1055 7.88826 23.0251 8.31473 22.1722 9.1961C21.3192 10.049 20.8927 11.1294 20.8927 12.4088C20.8789 13.0071 20.985 13.6021 21.2047 14.1588C21.4244 14.7155 21.7534 15.2225 22.1722 15.65C23.0251 16.5029 24.1055 16.9294 25.3849 16.9294C26.6643 16.9294 27.7163 16.5029 28.5692 15.65Z"/><path d="M38.867 16.7304H41.4258V19.6588H35.6813V0H38.867V16.7304Z"/><path d="M62.0186 0H65.2029V19.6588H62.0186V17.4128C60.7392 19.1471 59.0618 20 56.9294 20C54.8824 20 53.1765 19.2892 51.8118 17.8392C50.4755 16.3892 49.7932 14.5696 49.7932 12.4088C49.7932 10.2481 50.4755 8.45689 51.8118 7.00689C53.1765 5.5569 54.8824 4.81768 56.9294 4.81768C59.0618 4.81768 60.7392 5.67062 62.0186 7.40493V0ZM60.7392 15.65C61.158 15.2225 61.4869 14.7155 61.7067 14.1588C61.9264 13.6021 62.0325 13.0071 62.0186 12.4088C62.0186 11.1294 61.5922 10.049 60.7392 9.1961C59.8863 8.31473 58.8343 7.88826 57.5549 7.88826C56.2755 7.88826 55.1951 8.31473 54.3422 9.1961C53.4892 10.049 53.0628 11.1294 53.0628 12.4088C53.0489 13.0071 53.155 13.6021 53.3747 14.1588C53.5945 14.7155 53.9234 15.2225 54.3422 15.65C55.1951 16.503 56.2755 16.9294 57.5549 16.9294C58.8343 16.9294 59.8863 16.503 60.7392 15.65Z"/><path d="M44.0131 8.07875H41.4784V5.14748H47.1419V19.6546H44.0145L44.0131 8.07875Z"/><path d="M45.2115 3.86666C46.2768 3.86666 47.1405 3.00299 47.1405 1.9376C47.1405 0.872208 46.2768 0.00853603 45.2115 0.00853603C44.1461 0.00853603 43.2824 0.872208 43.2824 1.9376C43.2824 3.00299 44.1461 3.86666 45.2115 3.86666Z"/></symbol>
   <symbol id="i-trash" viewBox="0 0 256 256" fill="currentColor"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"/></symbol><symbol id="i-checks" viewBox="0 0 256 256" fill="currentColor"><path d="M149.61,85.71l-89.6,88a8,8,0,0,1-11.22,0L10.39,136a8,8,0,1,1,11.22-11.41L54.4,156.79l84-82.5a8,8,0,1,1,11.22,11.42Zm96.1-11.32a8,8,0,0,0-11.32-.1l-84,82.5-18.83-18.5a8,8,0,0,0-11.21,11.42l24.43,24a8,8,0,0,0,11.22,0l89.6-88A8,8,0,0,0,245.71,74.39Z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 256 256" fill="currentColor"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"/></symbol><symbol id="i-pin" viewBox="0 0 256 256" fill="currentColor"><path d="M48,56V200a8,8,0,0,1-16,0V56a8,8,0,0,1,16,0Zm92,54.5L120,117V96a8,8,0,0,0-16,0v21L84,110.5a8,8,0,0,0-5,15.22l20,6.49-12.34,17a8,8,0,1,0,12.94,9.4l12.34-17,12.34,17a8,8,0,1,0,12.94-9.4l-12.34-17,20-6.49A8,8,0,0,0,140,110.5ZM246,115.64A8,8,0,0,0,236,110.5L216,117V96a8,8,0,0,0-16,0v21l-20-6.49a8,8,0,0,0-4.95,15.22l20,6.49-12.34,17a8,8,0,1,0,12.94,9.4l12.34-17,12.34,17a8,8,0,1,0,12.94-9.4l-12.34-17,20-6.49A8,8,0,0,0,246,115.64Z"/></symbol><symbol id="i-lock" viewBox="0 0 256 256" fill="currentColor"><path d="M128,112a28,28,0,0,0-8,54.83V184a8,8,0,0,0,16,0V166.83A28,28,0,0,0,128,112Zm0,40a12,12,0,1,1,12-12A12,12,0,0,1,128,152Zm80-72H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Z"/></symbol><symbol id="i-eyeoff" viewBox="0 0 256 256" fill="currentColor"><path d="M53.92,34.62A8,8,0,1,0,42.08,45.38L61.32,66.55C25,88.84,9.38,123.2,8.69,124.76a8,8,0,0,0,0,6.5c.35.79,8.82,19.57,27.65,38.4C61.43,194.74,93.12,208,128,208a127.11,127.11,0,0,0,52.07-10.83l22,24.21a8,8,0,1,0,11.84-10.76Zm47.33,75.84,41.67,45.85a32,32,0,0,1-41.67-45.85ZM128,192c-30.78,0-57.67-11.19-79.93-33.25A133.16,133.16,0,0,1,25,128c4.69-8.79,19.66-33.39,47.35-49.38l18,19.75a48,48,0,0,0,63.66,70l14.73,16.2A112,112,0,0,1,128,192Zm6-95.43a8,8,0,0,1,3-15.72,48.16,48.16,0,0,1,38.77,42.64,8,8,0,0,1-7.22,8.71,6.39,6.39,0,0,1-.75,0,8,8,0,0,1-8-7.26A32.09,32.09,0,0,0,134,96.57Zm113.28,34.69c-.42.94-10.55,23.37-33.36,43.8a8,8,0,1,1-10.67-11.92A132.77,132.77,0,0,0,231.05,128a133.15,133.15,0,0,0-23.12-30.77C185.67,75.19,158.78,64,128,64a118.37,118.37,0,0,0-19.36,1.57A8,8,0,1,1,106,49.79,134,134,0,0,1,128,48c34.88,0,66.57,13.26,91.66,38.35,18.83,18.83,27.3,37.62,27.65,38.41A8,8,0,0,1,247.31,131.26Z"/></symbol><symbol id="i-alarm" viewBox="0 0 256 256" fill="currentColor"><path d="M224,71.1a8,8,0,0,1-10.78-3.42,94.13,94.13,0,0,0-33.46-36.91,8,8,0,1,1,8.54-13.54,111.46,111.46,0,0,1,39.12,43.09A8,8,0,0,1,224,71.1ZM35.71,72a8,8,0,0,0,7.1-4.32A94.13,94.13,0,0,1,76.27,30.77a8,8,0,1,0-8.54-13.54A111.46,111.46,0,0,0,28.61,60.32,8,8,0,0,0,35.71,72Zm186.1,103.94A16,16,0,0,1,208,200H167.2a40,40,0,0,1-78.4,0H48a16,16,0,0,1-13.79-24.06C43.22,160.39,48,138.28,48,112a80,80,0,0,1,160,0C208,138.27,212.78,160.38,221.81,175.94ZM150.62,200H105.38a24,24,0,0,0,45.24,0ZM208,184c-10.64-18.27-16-42.49-16-72a64,64,0,0,0-128,0c0,29.52-5.38,53.74-16,72Z"/></symbol>
   <symbol id="i-bell" viewBox="0 0 256 256" fill="currentColor"><path d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"/></symbol>
   <symbol id="i-refresh" viewBox="0 0 256 256" fill="currentColor"><path d="M240,56v48a8,8,0,0,1-8,8H184a8,8,0,0,1,0-16H211.4L184.81,71.64l-.25-.24a80,80,0,1,0-1.67,114.78,8,8,0,0,1,11,11.63A95.44,95.44,0,0,1,128,224h-1.32A96,96,0,1,1,195.75,60L224,85.8V56a8,8,0,1,1,16,0Z"/></symbol>
   <symbol id="i-phone" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"/></symbol>
@@ -778,7 +797,7 @@ p{font-size:14px;line-height:24px}
   <div class="body" id="notif-list">
     <div class="notif-top"><span>Deslize para a esquerda para excluir</span><button id="notif-all" data-act="notif-read-all"><svg><use href="#i-checks"/></svg>Marcar todas como lidas</button></div>
     <div class="notif-row"><button class="notif-del" data-act="notif-del" aria-label="Excluir notificação"><svg><use href="#i-trash"/></svg>Excluir</button><div class="notif unread"><span class="ico-circle"><svg><use href="#i-id"/></svg></span><div><b>Adicione sua primeira credencial</b><p>Cadastre seu passaporte ou seus dados pessoais para compartilhar com segurança.</p><small>Agora</small><button class="notif-read" data-act="notif-read"><svg><use href="#i-tick"/></svg>Marcar como lida</button></div></div></div>
-    <div class="notif-row"><button class="notif-del" data-act="notif-del" aria-label="Excluir notificação"><svg><use href="#i-trash"/></svg>Excluir</button><div class="notif unread"><span class="ico-circle"><svg><use href="#i-key"/></svg></span><div><b>Proteja sua carteira</b><p>Ative as proteções de uso em Opções para deixar sua carteira ainda mais segura.</p><small>Hoje</small><button class="notif-read" data-act="notif-read"><svg><use href="#i-tick"/></svg>Marcar como lida</button></div></div></div>
+    <div class="notif-row"><button class="notif-del" data-act="notif-del" aria-label="Excluir notificação"><svg><use href="#i-trash"/></svg>Excluir</button><div class="notif unread"><span class="ico-circle"><svg><use href="#i-key"/></svg></span><div><b>Proteja sua carteira</b><p>Ative os métodos na Central de proteção, em Opções, para deixar sua carteira ainda mais segura.</p><small>Hoje</small><button class="notif-read" data-act="notif-read"><svg><use href="#i-tick"/></svg>Marcar como lida</button></div></div></div>
     <div class="notif-row"><button class="notif-del" data-act="notif-del" aria-label="Excluir notificação"><svg><use href="#i-trash"/></svg>Excluir</button><div class="notif"><span class="ico-circle"><svg><use href="#i-wallet"/></svg></span><div><b>Boas-vindas à Valid Wallet</b><p>Sua carteira digital está pronta. Guarde documentos e compartilhe só o necessário.</p><small>Hoje</small><button class="notif-read" data-act="notif-read"><svg><use href="#i-tick"/></svg>Marcar como lida</button></div></div></div>
     <div class="notif-empty" id="notif-empty" hidden><span class="ico-circle"><svg><use href="#i-bell"/></svg></span><b>Nenhuma notificação</b><p>Você está em dia.</p></div>
   </div>
@@ -789,7 +808,7 @@ p{font-size:14px;line-height:24px}
   <div class="body flush">
     <p style="padding:16px;font-size:15px;background:var(--bg)">Selecione o que você quer fazer</p>
     <div class="menu">
-      <button data-toast="Proteções de uso não fazem parte do protótipo"><span class="ico-circle"><svg><use href="#i-key"/></svg></span><span>Ativar proteções de uso</span><svg class="chev"><use href="#i-chev"/></svg></button>
+      <button data-go="protecao"><span class="ico-circle"><svg><use href="#i-shield"/></svg></span><span>Central de proteção</span><svg class="chev"><use href="#i-chev"/></svg></button>
       <button data-go="idioma"><span class="ico-circle"><svg><use href="#i-globe"/></svg></span><span>Idioma</span><svg class="chev"><use href="#i-chev"/></svg></button>
       <button data-toast="Valid Wallet · protótipo navegável"><span class="ico-circle"><svg><use href="#i-info"/></svg></span><span>Sobre</span><svg class="chev"><use href="#i-chev"/></svg></button>
       <button data-go="terms"><span class="ico-circle"><svg><use href="#i-book"/></svg></span><span>Termos e condições de uso</span><svg class="chev"><use href="#i-chev"/></svg></button>
@@ -799,13 +818,29 @@ p{font-size:14px;line-height:24px}
   <div class="tabbar" data-tabs="opcoes"></div>
 </section>
 
+<section class="screen" id="protecao">
+  <div class="bar"><button class="back" data-back aria-label="Voltar"><svg width="24" height="24"><use href="#i-back"/></svg></button>Central de proteção</div>
+  <div class="body flush">
+    <div class="prot-hero" id="prot-hero"><span class="shield"><svg><use href="#i-shield"/></svg></span><div style="flex:1"><b id="prot-title">Sua carteira está protegida</b><p><span id="prot-count">4</span> <span>de</span> 5 <span>métodos ativos</span></p><div class="prot-meter" id="prot-meter"><i></i><i></i><i></i><i></i><i></i></div></div></div>
+    <p class="prot-h">Métodos de proteção</p>
+    <div class="menu" id="prot-list">
+      <button class="prot" data-prot="faceid" role="switch" aria-checked="false"><span class="ico-circle"><svg><use href="#i-face"/></svg></span><span><b>Face ID</b><small>Confirme sua identidade com o rosto ao usar uma credencial.</small></span><i class="toggle"></i></button>
+      <button class="prot" data-prot="pin" role="switch" aria-checked="false"><span class="ico-circle"><svg><use href="#i-pin"/></svg></span><span><b>Código de acesso</b><small>Use um código de 6 dígitos quando a biometria não estiver disponível.</small></span><i class="toggle"></i></button>
+      <button class="prot" data-prot="autolock" role="switch" aria-checked="false"><span class="ico-circle"><svg><use href="#i-lock"/></svg></span><span><b>Bloqueio automático</b><small>Bloqueia a carteira quando você sai do app.</small></span><i class="toggle"></i></button>
+      <button class="prot" data-prot="capture" role="switch" aria-checked="false"><span class="ico-circle"><svg><use href="#i-eyeoff"/></svg></span><span><b>Proteção contra capturas</b><small>Oculta o conteúdo em capturas e gravações de tela.</small></span><i class="toggle"></i></button>
+      <button class="prot" data-prot="alerts" role="switch" aria-checked="false"><span class="ico-circle"><svg><use href="#i-alarm"/></svg></span><span><b>Alertas de segurança</b><small>Avisa quando sua carteira for usada em outro aparelho.</small></span><i class="toggle"></i></button>
+    </div>
+    <p class="prot-note">Recomendamos manter ao menos um método de verificação ativo para proteger suas credenciais.</p>
+  </div>
+</section>
+
 <section class="screen" id="idioma">
   <div class="bar"><button class="back" data-back><svg width="24" height="24"><use href="#i-back"/></svg></button>Idioma</div>
   <div class="body flush">
     <p style="padding:16px;font-size:15px">Selecione o idioma do sistema</p>
     <div class="menu" id="langs">
-      <button data-lang="es"><span class="flag"><svg viewBox="0 0 22 16"><rect width="11" height="8" fill="#fff"/><rect x="11" width="11" height="8" fill="#d21034"/><rect y="8" width="11" height="8" fill="#005293"/><rect x="11" y="8" width="11" height="8" fill="#fff"/></svg></span><span>Espanhol</span><i class="toggle on"></i></button>
-      <button data-lang="en"><span class="flag"><svg viewBox="0 0 22 16"><rect width="22" height="16" fill="#fff"/><g fill="#b22234"><rect width="22" height="1.7"/><rect y="3.4" width="22" height="1.7"/><rect y="6.8" width="22" height="1.7"/><rect y="10.2" width="22" height="1.7"/><rect y="13.6" width="22" height="2.4"/></g><rect width="10" height="8.6" fill="#3c3b6e"/></svg></span><span>Inglês</span><i class="toggle"></i></button>
+      <button data-lang="es"><span class="flag"><svg viewBox="0 0 22 16"><rect width="22" height="16" fill="#AA151B"/><rect y="4" width="22" height="8" fill="#F1BF00"/></svg></span><span>Espanhol</span><i class="toggle on"></i></button>
+      <button data-lang="en"><span class="flag"><svg viewBox="0 0 22 16"><rect width="22" height="16" fill="#fff"/><g fill="#B22234"><rect y="0.000" width="22" height="1.231"/><rect y="2.462" width="22" height="1.231"/><rect y="4.923" width="22" height="1.231"/><rect y="7.385" width="22" height="1.231"/><rect y="9.846" width="22" height="1.231"/><rect y="12.308" width="22" height="1.231"/><rect y="14.769" width="22" height="1.231"/></g><rect width="8.8" height="8.615" fill="#3C3B6E"/><g fill="#fff"><circle cx="0.75" cy="0.55" r=".32"/><circle cx="2.25" cy="0.55" r=".32"/><circle cx="3.75" cy="0.55" r=".32"/><circle cx="5.25" cy="0.55" r=".32"/><circle cx="6.75" cy="0.55" r=".32"/><circle cx="8.25" cy="0.55" r=".32"/><circle cx="1.50" cy="1.50" r=".32"/><circle cx="3.00" cy="1.50" r=".32"/><circle cx="4.50" cy="1.50" r=".32"/><circle cx="6.00" cy="1.50" r=".32"/><circle cx="7.50" cy="1.50" r=".32"/><circle cx="0.75" cy="2.45" r=".32"/><circle cx="2.25" cy="2.45" r=".32"/><circle cx="3.75" cy="2.45" r=".32"/><circle cx="5.25" cy="2.45" r=".32"/><circle cx="6.75" cy="2.45" r=".32"/><circle cx="8.25" cy="2.45" r=".32"/><circle cx="1.50" cy="3.40" r=".32"/><circle cx="3.00" cy="3.40" r=".32"/><circle cx="4.50" cy="3.40" r=".32"/><circle cx="6.00" cy="3.40" r=".32"/><circle cx="7.50" cy="3.40" r=".32"/><circle cx="0.75" cy="4.35" r=".32"/><circle cx="2.25" cy="4.35" r=".32"/><circle cx="3.75" cy="4.35" r=".32"/><circle cx="5.25" cy="4.35" r=".32"/><circle cx="6.75" cy="4.35" r=".32"/><circle cx="8.25" cy="4.35" r=".32"/><circle cx="1.50" cy="5.30" r=".32"/><circle cx="3.00" cy="5.30" r=".32"/><circle cx="4.50" cy="5.30" r=".32"/><circle cx="6.00" cy="5.30" r=".32"/><circle cx="7.50" cy="5.30" r=".32"/><circle cx="0.75" cy="6.25" r=".32"/><circle cx="2.25" cy="6.25" r=".32"/><circle cx="3.75" cy="6.25" r=".32"/><circle cx="5.25" cy="6.25" r=".32"/><circle cx="6.75" cy="6.25" r=".32"/><circle cx="8.25" cy="6.25" r=".32"/><circle cx="1.50" cy="7.20" r=".32"/><circle cx="3.00" cy="7.20" r=".32"/><circle cx="4.50" cy="7.20" r=".32"/><circle cx="6.00" cy="7.20" r=".32"/><circle cx="7.50" cy="7.20" r=".32"/><circle cx="0.75" cy="8.15" r=".32"/><circle cx="2.25" cy="8.15" r=".32"/><circle cx="3.75" cy="8.15" r=".32"/><circle cx="5.25" cy="8.15" r=".32"/><circle cx="6.75" cy="8.15" r=".32"/><circle cx="8.25" cy="8.15" r=".32"/></g></svg></span><span>Inglês</span><i class="toggle"></i></button>
       <button data-lang="pt"><span class="flag"><svg viewBox="0 0 22 16"><rect width="22" height="16" fill="#009b3a"/><path d="M11 2 20 8 11 14 2 8z" fill="#fedf00"/><circle cx="11" cy="8" r="3.2" fill="#002776"/></svg></span><span>Português</span><i class="toggle"></i></button>
     </div>
   </div>
@@ -1020,6 +1055,25 @@ p{font-size:14px;line-height:24px}
   }
   document.addEventListener('pointerup',swEnd);document.addEventListener('pointercancel',swEnd);
 
+  /* Central de proteção: métodos ligados/desligados ficam salvos no aparelho.
+     Face ID desligado: "Usar credencial" segue direto, sem pedir a biometria. */
+  var PROT_KEY='vw-protect', PROT_DEF={faceid:true,pin:true,autolock:true,capture:true,alerts:false};
+  var prot=(function(){try{var v=JSON.parse(localStorage.getItem(PROT_KEY)||'null');if(v&&typeof v==='object'){var o={};for(var k in PROT_DEF)o[k]=k in v?!!v[k]:PROT_DEF[k];return o}}catch(_){}var d={};for(var k2 in PROT_DEF)d[k2]=PROT_DEF[k2];return d})();
+  function protSync(){
+    var n=0;
+    $$('#prot-list [data-prot]').forEach(function(b){var on=!!prot[b.getAttribute('data-prot')];if(on)n++;$('.toggle',b).classList.toggle('on',on);b.setAttribute('aria-checked',on?'true':'false')});
+    var hero=$('#prot-hero');hero.classList.toggle('warn',n>0&&n<3);hero.classList.toggle('off',n===0);
+    $('#prot-title').textContent=n>=3?'Sua carteira está protegida':n>0?'Proteção parcial':'Sua carteira está desprotegida';
+    $('#prot-count').textContent=n;
+    $$('#prot-meter i').forEach(function(i,k){i.classList.toggle('on',k<n)});
+  }
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('#prot-list [data-prot]');if(!b)return;
+    var k=b.getAttribute('data-prot');prot[k]=!prot[k];
+    try{localStorage.setItem(PROT_KEY,JSON.stringify(prot))}catch(_){}
+    protSync();toast(prot[k]?'Proteção ativada':'Proteção desativada');
+  });
+
   /* Abas inferiores */
   function renderTabs(){
     $$('.tabbar').forEach(function(t){
@@ -1106,6 +1160,7 @@ p{font-size:14px;line-height:24px}
     if(el.hasAttribute('data-set')){var kv=el.getAttribute('data-set').split('=');state[kv[0]]=kv[1]}
     if(el.hasAttribute('data-view'))view=el.getAttribute('data-view');
     if(el.hasAttribute('data-close'))$$('.sheet-wrap.open').forEach(function(s){s.classList.remove('open')});
+    if(el.getAttribute('data-open')==='faceid'&&!prot.faceid){state.use=view;go('scan');return}
     if(el.hasAttribute('data-open')){$('#'+el.getAttribute('data-open')).classList.add('open');return}
     if(el.hasAttribute('data-toast'))toast(el.getAttribute('data-toast'));
     var act=el.getAttribute('data-act');
@@ -1298,7 +1353,7 @@ p{font-size:14px;line-height:24px}
       var p=$('#cred-pages');p.scrollTo({left:(+b.getAttribute('data-page'))*(p.clientWidth+12)});
     });
   }
-  renderTabs();notifSync();
+  renderTabs();notifSync();protSync();
   var start=location.hash.slice(1);
   if(start&&$('#'+start)){state.passaporte=state.dados=state.evento=/^(cred|scan|share|shared|opcoes|idioma)$/.test(start);stack=['home',start];show(start)}
   else show('splash');
