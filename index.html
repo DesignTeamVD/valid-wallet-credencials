@@ -56,8 +56,9 @@ body.web .sheet{max-width:none}
 .brand.tall .logo{margin-top:12px}
 .brand.compact{height:132px}
 .brand.compact .logo svg{height:19px}
-.obar{height:56px;align-self:stretch;display:flex;align-items:center;gap:16px;padding:0 16px;color:var(--text);font-size:16px;flex:none;width:100%}
-.obar .back{display:flex;width:24px;height:24px;color:var(--text)}
+.obar{height:56px;align-self:stretch;display:flex;align-items:center;gap:16px;padding:0 16px;color:#fff;font-size:16px;flex:none;width:100%}
+.obar .back{display:flex;width:24px;height:24px;color:#fff}
+.brand .logo{color:#fff}
 .field label{display:none}
 .field.has label,.field:focus-within label{display:block}
 .field input::placeholder{color:#5b5d6b}
@@ -125,7 +126,7 @@ body.web .sheet{max-width:none}
 .screen{position:absolute;inset:0;display:none;flex-direction:column;background:var(--bg);padding-top:env(safe-area-inset-top,0px)}
 /* App instalado: a área da barra de status recebe a cor do topo de cada tela (sem conteúdo por trás do vidro do sistema) */
 .screen::before{content:"";position:absolute;top:0;left:0;right:0;height:env(safe-area-inset-top,0px);background:var(--top,var(--surface));z-index:6;pointer-events:none}
-#home{--top:var(--primary)}
+#home,#login,#login-email,#signup{--top:var(--primary)}
 #splash,#welcome{--top:#f6f6f2}
 .screen.active{display:flex}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:inherit}
@@ -188,7 +189,7 @@ p{font-size:14px;line-height:24px}
 @keyframes spFade{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
 @keyframes splashFill{from{transform:scaleX(.04)}to{transform:scaleX(1)}}
 @media(prefers-reduced-motion:reduce){#splash *,#splash *::after{animation:none!important}}
-.brand{background:var(--surface);color:var(--text);height:140px;flex:none;display:flex;align-items:center;justify-content:center}
+.brand{background:var(--primary);color:#fff;height:140px;flex:none;display:flex;align-items:center;justify-content:center}
 .logo{display:inline-flex;align-items:flex-end;gap:6px;color:var(--text)}.logo svg{height:21px;width:auto;aspect-ratio:66/20}.logo>span{font-size:12px;line-height:1;padding-bottom:1px}
 .brand.sm{position:relative;height:auto;padding:24px 16px;align-items:flex-start;justify-content:flex-start;flex-direction:column;gap:16px;color:#fff;background:var(--primary)}
 .brand.sm .logo{color:#fff}
