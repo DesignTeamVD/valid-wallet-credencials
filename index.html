@@ -125,6 +125,10 @@ body.web .sheet{max-width:none}
 
 .screen{position:absolute;inset:0;display:none;flex-direction:column;background:var(--bg);padding-top:env(safe-area-inset-top,0px)}
 /* App instalado: a área da barra de status recebe a cor do topo de cada tela (sem conteúdo por trás do vidro do sistema) */
+#edge-top,#edge-bottom{position:fixed;left:0;right:0;z-index:30;pointer-events:none;display:none}
+#edge-top{top:0;height:calc(env(safe-area-inset-top,0px) + 1px);background:var(--surface)}
+#edge-bottom{bottom:0;height:calc(env(safe-area-inset-bottom,0px) + 1px);background:#fff}
+@media (hover:none),(pointer:coarse){#edge-top,#edge-bottom{display:block}html,body{background:#fff}}
 .screen::before{content:"";position:absolute;top:0;left:0;right:0;height:env(safe-area-inset-top,0px);background:var(--top,var(--surface));z-index:6;pointer-events:none}
 #home,#login,#login-email,#signup{--top:var(--primary)}
 #splash,#welcome{--top:#f6f6f2}
@@ -889,6 +893,7 @@ p{font-size:14px;line-height:24px}
 </section>
 
 <div class="toast" id="toast"></div>
+<div id="edge-top" aria-hidden="true"></div><div id="edge-bottom" aria-hidden="true"></div>
 </div>
 </div>
 </main>
@@ -1114,13 +1119,12 @@ p{font-size:14px;line-height:24px}
     protSync();toast(prot[k]?'Proteção ativada':'Proteção desativada');
   });
 
-  /* Topo do app instalado: o iOS 26 desfoca a faixa da barra de status usando a cor de fundo da página,
-     e o Android usa o theme-color. Os dois passam a seguir a cor do topo da tela atual (--top). */
-  var desk=window.matchMedia&&matchMedia('(hover:hover) and (pointer:fine)').matches;
+  /* Topo do app instalado: o iOS 26 pinta as faixas do sistema com a cor de elementos fixos encostados nas bordas
+     (#edge-top segue o topo da tela; #edge-bottom fica branco) e o Android usa o theme-color. */
   function paintTop(screen){
     var c=(getComputedStyle(screen).getPropertyValue('--top')||'').trim()||'#ffffff';
     var tc=$('meta[name="theme-color"]');if(tc)tc.setAttribute('content',c);
-    if(!desk){document.documentElement.style.backgroundColor=c;document.body.style.backgroundColor=c}
+    var et=$('#edge-top');if(et)et.style.backgroundColor=c;
   }
 
   /* Abas inferiores */
